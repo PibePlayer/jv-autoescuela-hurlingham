@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jv-autoescuela-hurlingham",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-01-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    "SCHOOL_NAME": "JV Autoescuela",
+    "SCHOOL_CITY": "Hurlingham, Buenos Aires",
+    "SCHOOL_ADDRESS": "Av. Gobernador Vergara 3855, Hurlingham",
+    "SCHOOL_WHATSAPP": "5491168172577",
+    "TIMEZONE": "America/Argentina/Buenos_Aires"
+  }
+  // =========================================================================
+  // INTEGRACIONES FUTURAS EN CLOUDFLARE WORKERS:
+  // 1. Base de datos D1 para guardar reservas, alumnos y órdenes de compra:
+  // "d1_databases": [
+  //   { "binding": "DB", "database_name": "jv-autoescuela-db", "database_id": "<TU_DATABASE_ID>" }
+  // ]
+  //
+  // 2. Secrets recomendados (cargar con `npx wrangler secret put <NOMBRE>`):
+  //    - GOOGLE_CALENDAR_ID (ID del calendario de Google de JV Autoescuela)
+  //    - GOOGLE_SERVICE_ACCOUNT_EMAIL
+  //    - GOOGLE_PRIVATE_KEY
+  //    - MP_ACCESS_TOKEN (Token de Mercado Pago Checkout Pro)
+  // =========================================================================
+}

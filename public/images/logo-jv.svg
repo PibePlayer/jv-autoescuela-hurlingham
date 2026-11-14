@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 56" fill="none" role="img" aria-label="JV Autoescuela Hurlingham">
+  <rect x="2" y="4" width="48" height="48" rx="12" fill="#D41920" />
+  <circle cx="26" cy="28" r="15" stroke="#FFFFFF" stroke-width="3" />
+  <circle cx="26" cy="28" r="3.5" fill="#FFFFFF" />
+  <path d="M26 13V24.5M14.5 34.5L23 29.8M37.5 34.5L29 29.8" stroke="#FFFFFF" stroke-width="2.8" stroke-linecap="round" />
+  <path d="M40 4L50 4L50 14" fill="#141619" opacity="0.22" />
+  <text x="60" y="29" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="22" letter-spacing="-0.5" fill="#D41920">JV</text>
+  <text x="90" y="29" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="800" font-size="18" letter-spacing="-0.3" fill="#141619">AUTOESCUELA</text>
+  <rect x="60" y="36" width="14" height="3" rx="1.5" fill="#D41920" />
+  <text x="79" y="42" font-family="'Inter', system-ui, sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.4" fill="#5E6673">HURLINGHAM · DESDE 2000</text>
+</svg>
