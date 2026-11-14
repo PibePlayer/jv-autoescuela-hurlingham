@@ -90,52 +90,53 @@
     </header>
 
     <main id="inicio">
-      <!-- HERO SLIDER FLUIDO (Inspirado en Driver's School) -->
+      <!-- HERO PRINCIPAL -->
       <section class="hero" id="hero-slider">
         <div class="container">
-          <div class="hero-viewport">
-            <div class="hero-track" id="hero-track">
-              <!-- Slides pre-renderizados desde HERO_SLIDES para transición fluida sin parpadeos -->
-              <div class="hero-slide is-active">
-                <div class="hero-grid">
-                  <div class="hero-animate-1">
-                    <span class="hero-eyebrow">Autoescuela N° 1 de Hurlingham · Habilitada PBA</span>
-                    <h1>Aprendé a manejar de verdad en Hurlingham.</h1>
-                    <p class="hero-lead">
-                      Clases individuales con instructores matriculados en nuestro <strong>VW Gol rojo con doble pedalera</strong>.
-                      Hacemos la diferencia desde el primer día.
-                    </p>
-                    <div class="hero-ctas">
-                      <a href="#cursos" class="btn btn-primary">Elegir Curso</a>
-                      <a href="#turnero" class="btn btn-outline-light">Reservar Turno</a>
-                      <a
-                        href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela%20Hurlingham!%20Quiero%20consultar%20por%20clases%20de%20manejo."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="btn btn-whatsapp"
-                      >
-                        WhatsApp 11-6817-2577
-                      </a>
-                    </div>
-                  </div>
-                  <div class="hero-animate-2">
-                    <div class="hero-photo-frame">
-                      <img
-                        src="/images/gol-rojo-real.png"
-                        alt="Flota real de JV Autoescuela Hurlingham con VW Gol rojo ploteado"
-                        width="960"
-                        height="600"
-                      />
-                      <div class="hero-caption-bar">
-                        <span><strong>Flota Real JV Autoescuela · Hurlingham</strong></span>
-                        <span>VW Gol Rojo Doble Pedalera · 11-6817-2577</span>
-                      </div>
-                    </div>
-                  </div>
+          <div class="hero-grid">
+            <div class="hero-copy-stage" id="hero-copy-stage">
+              <div class="hero-copy-pane is-active">
+                <span class="hero-eyebrow">Autoescuela N° 1 de Hurlingham · Habilitada PBA</span>
+                <h1>Aprendé a manejar de verdad en Hurlingham.</h1>
+                <p class="hero-lead">
+                  Clases individuales con instructores matriculados en nuestro <strong>VW Gol rojo con doble pedalera</strong>.
+                  Hacemos la diferencia desde el primer día.
+                </p>
+                <div class="hero-ctas">
+                  <a href="#cursos" class="btn btn-primary">Elegir Curso</a>
+                  <a href="#turnero" class="btn btn-outline-light">Reservar Turno</a>
+                  <a
+                    href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela%20Hurlingham!%20Quiero%20consultar%20por%20clases%20de%20manejo."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-whatsapp"
+                  >
+                    WhatsApp 11-6817-2577
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-media-stage" id="hero-media-stage">
+              <div class="hero-photo-frame">
+                <div class="hero-media-layers" id="hero-media-layers">
+                  <img
+                    src="/images/gol-rojo-real.png"
+                    alt="Flota real de JV Autoescuela Hurlingham con VW Gol rojo ploteado"
+                    class="hero-media-img is-active"
+                    width="960"
+                    height="600"
+                  />
+                </div>
+                <div class="hero-caption-bar" id="hero-caption-bar">
+                  <span><strong>Flota Real JV Autoescuela · Hurlingham</strong></span>
+                  <span>VW Gol Rojo Doble Pedalera · 11-6817-2577</span>
                 </div>
               </div>
             </div>
           </div>
+
+          <div class="hero-progress-tabs" id="hero-progress-tabs" role="tablist" aria-label="Destacados JV Autoescuela"></div>
 
           <div class="hero-trust-strip" style="margin-top: 26px;">
             <div class="trust-metric">
@@ -148,15 +149,7 @@
             </div>
             <div class="trust-metric">
               <strong>Desde el 2000</strong>
-              <span>Formación vial real, sin improvisar</span>
-            </div>
-          </div>
-
-          <div class="hero-slider-controls">
-            <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Diapositivas"></div>
-            <div class="hero-arrows">
-              <button type="button" class="hero-arrow" id="hero-prev" aria-label="Anterior">←</button>
-              <button type="button" class="hero-arrow" id="hero-next" aria-label="Siguiente">→</button>
+              <span>Formación vial real, paso a paso</span>
             </div>
           </div>
         </div>
@@ -178,14 +171,14 @@
         </div>
       </section>
 
-      <!-- CURSOS A MEDIDA (SIN PRECIOS INVENTADOS) -->
+      <!-- CURSOS A MEDIDA -->
       <section class="section section-surface" id="cursos">
         <div class="container">
           <div class="section-header reveal">
             <span class="section-kicker">Cursos a Medida · Clases de 45 min</span>
             <h2 class="section-title">Clases individuales o packs de 4, 6 y 10 clases</h2>
             <p class="section-subtitle">
-              Cada clase dura 45 minutos reales al volante. Armá tu consulta y te enviamos los valores vigentes por WhatsApp.
+              Cada clase dura 45 minutos reales al volante. Elegí el plan que mejor se adapte a tu nivel y consultanos por WhatsApp.
             </p>
           </div>
 
@@ -202,14 +195,14 @@
         </div>
       </section>
 
-      <!-- DIFERENCIACIÓN LIMPIA EN 4 PILARES -->
+      <!-- POR QUÉ ELEGIR JV -->
       <section class="section" id="calidad">
         <div class="container">
           <div class="section-header reveal">
-            <span class="section-kicker">Calidad Real vs. Opciones Gratuitas</span>
+            <span class="section-kicker">Formación Vial Profesional</span>
             <h2 class="section-title">¿Por qué somos la N° 1 de Hurlingham?</h2>
             <p class="section-subtitle">
-              Obtener una licencia sin preparación real te expone en la calle. En JV invertís en tu seguridad con respaldo oficial.
+              Aprender bien desde la primera clase te da confianza y seguridad real en cada esquina, rotonda y autopista.
             </p>
           </div>
 
@@ -217,7 +210,7 @@
             <article class="pillar-card">
               <h3>Instructores matriculados PBA</h3>
               <p>
-                Habilitación oficial vigente (Ley 13.927) y paciencia real para quienes arrancan desde cero o con miedo al tránsito, lejos de la improvisación.
+                Instructores habilitados (Ley 13.927) con paciencia y método claro para acompañarte desde el primer día, incluso si tenés miedo al tránsito.
               </p>
             </article>
             <article class="pillar-card">
@@ -229,20 +222,20 @@
             <article class="pillar-card">
               <h3>Clases personalizadas de 45 minutos en calle</h3>
               <p>
-                Clases individuales, o packs de 4, 6 y 10 clases de 45 min recorriendo Av. Vergara, rotondas y estacionamiento real en Hurlingham, sin compartir turnos.
+                Clases individuales, o packs de 4, 6 y 10 clases de 45 min recorriendo Av. Vergara, rotondas y estacionamiento real en Hurlingham.
               </p>
             </article>
             <article class="pillar-card">
               <h3>Facilidades de pago y horarios flexibles</h3>
               <p>
-                Turnos de Lunes a Sábados sin esperas de meses, facilidades de pago y acompañamiento el día del examen práctico.
+                Turnos de Lunes a Sábados sin esperas largas, facilidades de pago y acompañamiento el día del examen práctico.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      <!-- TURNERO ONLINE + GOOGLE CALENDAR -->
+      <!-- TURNERO ONLINE -->
       <section class="section section-dark" id="turnero">
         <div class="container">
           <div class="section-header reveal">
@@ -303,15 +296,15 @@
                   <label for="booking-experience">Nivel actual</label>
                   <select id="booking-experience" name="experience">
                     <option value="Desde cero (nunca manejé)">Desde cero (nunca manejé)</option>
-                    <option value="Con miedo o poca práctica">Con miedo o poca práctica</option>
-                    <option value="Ya manejo pero necesito rendir">Ya manejo, quiero aprobar el examen</option>
-                    <option value="Perfeccionamiento / Estacionamiento">Perfeccionamiento / Estacionamiento</option>
+                    <option value="Con poca experiencia o noción básica">Tuve poca experiencia / Conozco lo básico</option>
+                    <option value="Ya manejo pero necesito afianzar para rendir">Ya manejo, quiero afianzar para rendir</option>
+                    <option value="Perfeccionamiento / Estacionamiento">Perfeccionamiento puntual / Estacionamiento</option>
                   </select>
                 </div>
 
                 <div class="form-field form-field-full">
-                  <label>Franja horaria preferida (a confirmar por instructor y unidad)</label>
-                  <div class="slots-grid" id="slots-grid" role="radiogroup" aria-label="Franja horaria preferida"></div>
+                  <label>Horario preferido</label>
+                  <div class="slots-grid" id="slots-grid" role="radiogroup" aria-label="Horario preferido"></div>
                   <small id="slots-helper" style="color: var(--jv-muted); margin-top: 4px;"></small>
                 </div>
 
@@ -331,22 +324,22 @@
             </form>
 
             <aside class="booking-info-card">
-              <h3>¿Cómo funciona la pre-reserva?</h3>
+              <h3>¿Cómo reservás tu clase?</h3>
               <p style="color: #cbd5e1; font-size: 0.92rem; margin: 0;">
-                Hoy genera una solicitud directa con recordatorio de 45 min. Al conectar la API de Google Calendar de tus instructores, validará cupos reales al instante.
+                Coordiná tu horario en 3 simples pasos y recibí confirmación directa de nuestro equipo en Hurlingham.
               </p>
               <ul class="roadmap-list">
                 <li>
                   <span class="roadmap-step">1</span>
-                  <div><strong>Elegís franja preferida:</strong> Basada en atención de Lun a Vie (8–18 hs) y Sáb (9–13 hs).</div>
+                  <div><strong>Elegís vehículo y horario:</strong> Clases de 45 minutos de lunes a sábados.</div>
                 </li>
                 <li>
                   <span class="roadmap-step">2</span>
-                  <div><strong>Confirmamos instructor y auto:</strong> Enviás el código directo por WhatsApp al 11-6817-2577.</div>
+                  <div><strong>Confirmamos por WhatsApp:</strong> Te asignamos instructor y unidad disponible al 11-6817-2577.</div>
                 </li>
                 <li>
                   <span class="roadmap-step">3</span>
-                  <div><strong>Recordatorio en Google Calendar:</strong> Evento de 45 min con dirección Av. Vergara 3855.</div>
+                  <div><strong>Agendalo en tu calendario:</strong> Guardá el recordatorio con la dirección de Av. Vergara 3855.</div>
                 </li>
               </ul>
             </aside>
@@ -419,7 +412,7 @@
             </article>
             <article class="review-card">
               <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
-              <p>“Me preparé para moto y consulté por gran porte. Se nota la diferencia entre una escuela matriculada seria y cualquier curso improvisado.”</p>
+              <p>“Me preparé para moto y consulté por gran porte. Excelente predisposición, unidades cuidadas y te preparan para lo que te toman.”</p>
               <div class="review-author">Facundo L.</div>
               <div class="review-zone">William C. Morris</div>
             </article>
@@ -506,7 +499,7 @@
         </div>
         <div class="footer-bottom">
           <span>© 2026 JV Autoescuela Hurlingham. Todos los derechos reservados.</span>
-          <span>Cloudflare Workers · Preparado para Turnos, Google Calendar y Pagos Online</span>
+          <span>Av. Gobernador Vergara 3855 · Hurlingham, Buenos Aires</span>
         </div>
       </div>
     </footer>

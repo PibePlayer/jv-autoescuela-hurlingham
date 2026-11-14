@@ -13,53 +13,53 @@ export const COURSES_CATALOG = [
     id: 'auto-manual-1',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Clase Individual / Personalizada',
-    badge: '45 min · A tu ritmo',
+    title: 'Clase Individual · 45 min',
+    badge: 'Personalizada',
     classesCount: 1,
     durationMin: 45,
     metaLabel: '1 clase personalizada · 45 min · VW Gol Rojo',
     highlight: false,
     vehicle: 'VW Gol Rojo Doble Pedalera',
-    description: 'Clase puntual de 45 minutos adaptada a lo que necesitás reforzar: estacionamiento, embrague o tránsito en Hurlingham.'
+    description: 'Clase puntual de 45 minutos adaptada a lo que necesitás reforzar: estacionamiento, rotondas, autopista o evaluación.'
   },
   {
     id: 'auto-manual-4',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Curso Inicial · 4 Clases',
-    badge: '4 clases de 45 min',
+    title: 'Curso de 4 Clases',
+    badge: 'Ya sabés manejar · Pre-examen',
     classesCount: 4,
     durationMin: 45,
     metaLabel: '4 clases · 45 min c/u · VW Gol Rojo',
     highlight: false,
     vehicle: 'VW Gol Rojo Doble Pedalera',
-    description: '4 clases individuales de 45 minutos para afianzar embrague, cambios, rotondas y maniobras clave.'
+    description: 'Para quienes ya saben manejar pero necesitan afianzar maniobras puntuales, estacionamiento o ganar seguridad para rendir.'
   },
   {
     id: 'auto-manual-6',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Curso Intermedio · 6 Clases',
-    badge: '6 clases de 45 min',
+    title: 'Curso de 6 Clases',
+    badge: 'Conocimientos básicos',
     classesCount: 6,
     durationMin: 45,
     metaLabel: '6 clases · 45 min c/u · VW Gol Rojo',
     highlight: false,
     vehicle: 'VW Gol Rojo Doble Pedalera',
-    description: '6 clases prácticas de 45 minutos por Av. Vergara, avenidas, estacionamiento y preparación para rendir.'
+    description: 'Para quienes tuvieron poca experiencia o conocen lo básico y buscan soltarse con seguridad en el tránsito real.'
   },
   {
     id: 'auto-manual-10',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Curso Completo · 10 Clases',
-    badge: 'Más elegido en Hurlingham',
+    title: 'Curso de 10 Clases',
+    badge: 'Empezando desde 0 · Más elegido',
     classesCount: 10,
     durationMin: 45,
     metaLabel: '10 clases · 45 min c/u · VW Gol Rojo',
     highlight: true,
     vehicle: 'VW Gol Rojo Doble Pedalera',
-    description: '10 clases individuales de 45 minutos desde cero hasta dominar el tránsito real y el examen práctico.'
+    description: 'Ideal para empezar desde cero: aprendés paso a paso desde el primer arranque hasta dominar la calle y rendir el examen.'
   },
   {
     id: 'auto-automatico',
@@ -72,7 +72,7 @@ export const COURSES_CATALOG = [
     metaLabel: 'Individual o 4, 6 o 10 clases · 45 min · Automático',
     highlight: false,
     vehicle: 'Unidad Automática Doble Pedalera',
-    description: 'Clases individuales personalizadas o cursos de 4, 6 o 10 clases de 45 minutos en unidad automática con doble pedalera.'
+    description: 'Clases individuales o packs de 4, 6 y 10 clases de 45 minutos en vehículo automático con doble pedalera.'
   },
   {
     id: 'moto-cilindrada',
@@ -85,7 +85,7 @@ export const COURSES_CATALOG = [
     metaLabel: 'Individual o 4, 6 o 10 clases · 45 min · Todas las CC',
     highlight: false,
     vehicle: 'Motos según cilindrada (A1 / A2)',
-    description: 'Clases personalizadas de 45 minutos o cursos de 4, 6 o 10 clases: conos, equilibrio, frenado y pista.'
+    description: 'Clases personalizadas de 45 minutos o packs de 4, 6 y 10 clases: conos, equilibrio, frenado y pista oficial.'
   },
   {
     id: 'gran-porte-pro',
@@ -98,7 +98,7 @@ export const COURSES_CATALOG = [
     metaLabel: 'Individual o 4, 6 o 10 clases · 45 min · Cat. C / D / E',
     highlight: false,
     vehicle: 'Camión / Colectivo (Gran Porte)',
-    description: 'Clases personalizadas de 45 minutos para licencias profesionales: radios de giro, espejos y retroceso.'
+    description: 'Práctica personalizada de 45 minutos para licencias profesionales: radios de giro, espejos y retroceso.'
   },
   {
     id: 'extra-examen-alquiler',
@@ -111,7 +111,7 @@ export const COURSES_CATALOG = [
     metaLabel: 'Unidad habilitada + repaso 45 min',
     highlight: false,
     vehicle: 'Unidad JV Habilitada + Repaso 45 min',
-    description: 'Unidad habilitada con VTV y seguro de enseñanza al día + clase previa personalizada de 45 minutos.'
+    description: 'Alquiler de unidad habilitada con VTV y seguro de enseñanza al día + clase previa de repaso de 45 minutos.'
   }
 ];
 

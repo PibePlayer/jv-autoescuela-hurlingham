@@ -509,10 +509,7 @@ async function loadAvailability() {
     return;
   }
 
-  helper.textContent =
-    data.source === 'google-calendar'
-      ? `Disponibilidad en tiempo real (${data.dayType} · clases de 45 min).`
-      : `Franja horaria preferida (${data.dayType} · clases de 45 min). Confirmamos instructor y unidad disponible por WhatsApp.`;
+  helper.textContent = `${data.dayType} · Clases de 45 min. Elegí tu horario preferido y te confirmamos por WhatsApp.`;
   grid.innerHTML = data.slots
     .map(
       (s) => `
