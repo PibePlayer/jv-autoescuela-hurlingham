@@ -4,7 +4,7 @@ Aplicación web oficial de **JV Autoescuela** (Av. Gobernador Vergara 3855, Hurl
 
 ## Funcionalidades incluidas
 
-- **Catálogo integral de categorías:** Auto Caja Manual (en el icónico **VW Gol rojo ploteado** con doble comando), Auto Caja Automática, Motos en todas las cilindradas (A1.1–A1.4 / A2) y Vehículos de Gran Porte (Camiones y Colectivos C, D y E).
+- **Catálogo integral de categorías:** Auto Caja Manual (en el icónico **VW Gol rojo ploteado** con doble pedalera), Auto Caja Automática, Motos en todas las cilindradas (A1.1–A1.4 / A2) y Vehículos de Gran Porte (Camiones y Colectivos C, D y E).
 - **Posicionamiento N° 1 en Hurlingham:** Bloque comparativo directo que resalta habilitación oficial PBA (`DISPO-2024-5`), instructores matriculados, VTV y seguro de enseñanza al día frente a opciones gratuitas o improvisadas.
 - **Compra Online (Carrito + Packs):** Carrito persistente con selección de transferencia (10% OFF) o cuotas, conectado al endpoint `/api/checkout` (listo para Mercado Pago Checkout Pro).
 - **Turnero Online + Google Calendar:** Consulta disponibilidad real en `/api/availability` (Lun–Vie 8 a 18 hs, Sáb 9 a 13 hs, Dom cerrado), genera pre-reserva en `/api/bookings`, link directo para agendar en **Google Calendar** y resumen pre-armado para **WhatsApp (`11-6817-2577`)**.

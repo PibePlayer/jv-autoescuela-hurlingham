@@ -10,16 +10,43 @@
 
 export const COURSES_CATALOG = [
   {
-    id: 'auto-manual-5',
+    id: 'auto-manual-1',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Pack Inicial · 5 Clases',
-    badge: 'Conocimientos previos',
-    classesCount: 5,
-    durationMin: 60,
+    title: 'Clase Individual / Personalizada',
+    badge: '45 min · A tu ritmo',
+    classesCount: 1,
+    durationMin: 45,
+    metaLabel: '1 clase personalizada · 45 min · VW Gol Rojo',
     highlight: false,
-    vehicle: 'VW Gol Rojo Doble Comando',
-    description: 'Ideal para afianzar embrague, cambios, rotondas y estacionamiento en Hurlingham.'
+    vehicle: 'VW Gol Rojo Doble Pedalera',
+    description: 'Clase puntual de 45 minutos adaptada a lo que necesitás reforzar: estacionamiento, embrague o tránsito en Hurlingham.'
+  },
+  {
+    id: 'auto-manual-4',
+    category: 'manual',
+    categoryLabel: 'Auto Manual · VW Gol Rojo',
+    title: 'Curso Inicial · 4 Clases',
+    badge: '4 clases de 45 min',
+    classesCount: 4,
+    durationMin: 45,
+    metaLabel: '4 clases · 45 min c/u · VW Gol Rojo',
+    highlight: false,
+    vehicle: 'VW Gol Rojo Doble Pedalera',
+    description: '4 clases individuales de 45 minutos para afianzar embrague, cambios, rotondas y maniobras clave.'
+  },
+  {
+    id: 'auto-manual-6',
+    category: 'manual',
+    categoryLabel: 'Auto Manual · VW Gol Rojo',
+    title: 'Curso Intermedio · 6 Clases',
+    badge: '6 clases de 45 min',
+    classesCount: 6,
+    durationMin: 45,
+    metaLabel: '6 clases · 45 min c/u · VW Gol Rojo',
+    highlight: false,
+    vehicle: 'VW Gol Rojo Doble Pedalera',
+    description: '6 clases prácticas de 45 minutos por Av. Vergara, avenidas, estacionamiento y preparación para rendir.'
   },
   {
     id: 'auto-manual-10',
@@ -28,70 +55,50 @@ export const COURSES_CATALOG = [
     title: 'Curso Completo · 10 Clases',
     badge: 'Más elegido en Hurlingham',
     classesCount: 10,
-    durationMin: 60,
+    durationMin: 45,
+    metaLabel: '10 clases · 45 min c/u · VW Gol Rojo',
     highlight: true,
-    vehicle: 'VW Gol Rojo Doble Comando',
-    description: 'Aprendizaje desde cero hasta el nivel de examen práctico, con maniobras reales.'
+    vehicle: 'VW Gol Rojo Doble Pedalera',
+    description: '10 clases individuales de 45 minutos desde cero hasta dominar el tránsito real y el examen práctico.'
   },
   {
-    id: 'auto-manual-15',
-    category: 'manual',
-    categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Pack Intensivo · 15 Clases',
-    badge: 'Cero miedo al volante',
-    classesCount: 15,
-    durationMin: 60,
-    highlight: false,
-    vehicle: 'VW Gol Rojo Doble Comando',
-    description: 'Acompañamiento paciente paso a paso para principiantes absolutos o amaxofobia.'
-  },
-  {
-    id: 'auto-automatico-8',
+    id: 'auto-automatico',
     category: 'automatico',
     categoryLabel: 'Auto Caja Automática',
-    title: 'Curso Caja Automática · 8 Clases',
-    badge: 'Sin embrague',
-    classesCount: 8,
-    durationMin: 60,
+    title: 'Auto Automático · A Medida',
+    badge: 'Individual o 4 / 6 / 10 clases',
+    classesCount: 6,
+    durationMin: 45,
+    metaLabel: 'Individual o 4, 6 o 10 clases · 45 min · Automático',
     highlight: false,
-    vehicle: 'Unidad Automática Doble Comando',
-    description: 'Conducción fluida y segura en unidad moderna con caja automática y doble comando.'
+    vehicle: 'Unidad Automática Doble Pedalera',
+    description: 'Clases individuales personalizadas o cursos de 4, 6 o 10 clases de 45 minutos en unidad automática con doble pedalera.'
   },
   {
     id: 'moto-cilindrada',
     category: 'moto',
     categoryLabel: 'Motos · Todas las Cilindradas',
-    title: 'Curso Moto por Cilindrada',
-    badge: 'Cat. A1.1 a A1.4 / A2',
-    classesCount: 6,
-    durationMin: 60,
+    title: 'Moto por Cilindrada',
+    badge: 'Individual o 4 / 6 / 10 clases',
+    classesCount: 4,
+    durationMin: 45,
+    metaLabel: 'Individual o 4, 6 o 10 clases · 45 min · Todas las CC',
     highlight: false,
-    vehicle: 'Motos 110cc / 150cc / +250cc',
-    description: 'Circuito de conos, equilibrio a baja velocidad, frenado y práctica según cilindrada.'
+    vehicle: 'Motos según cilindrada (A1 / A2)',
+    description: 'Clases personalizadas de 45 minutos o cursos de 4, 6 o 10 clases: conos, equilibrio, frenado y pista.'
   },
   {
     id: 'gran-porte-pro',
     category: 'gran-porte',
     categoryLabel: 'Camiones y Colectivos',
-    title: 'Capacitación Gran Porte',
-    badge: 'Licencias C / D / E',
-    classesCount: 5,
-    durationMin: 60,
+    title: 'Vehículos de Gran Porte',
+    badge: 'Individual o 4 / 6 / 10 clases',
+    classesCount: 4,
+    durationMin: 45,
+    metaLabel: 'Individual o 4, 6 o 10 clases · 45 min · Cat. C / D / E',
     highlight: false,
     vehicle: 'Camión / Colectivo (Gran Porte)',
-    description: 'Radios de giro, espejos, retroceso y conducción profesional de carga o pasajeros.'
-  },
-  {
-    id: 'extra-estacionamiento',
-    category: 'extras',
-    categoryLabel: 'Clases a Medida',
-    title: 'Estacionamiento & Autopista',
-    badge: 'Perfeccionamiento',
-    classesCount: 2,
-    durationMin: 60,
-    highlight: false,
-    vehicle: 'VW Gol Rojo o Automático',
-    description: 'Referencias visuales precisas para estacionar entre autos y circular en autopista.'
+    description: 'Clases personalizadas de 45 minutos para licencias profesionales: radios de giro, espejos y retroceso.'
   },
   {
     id: 'extra-examen-alquiler',
@@ -100,10 +107,11 @@ export const COURSES_CATALOG = [
     title: 'Auto Habilitado para Examen',
     badge: 'Pista Hurlingham',
     classesCount: 1,
-    durationMin: 90,
+    durationMin: 45,
+    metaLabel: 'Unidad habilitada + repaso 45 min',
     highlight: false,
-    vehicle: 'Unidad JV Habilitada + Repaso',
-    description: 'Unidad habilitada con VTV y seguro de enseñanza al día + repaso previo al examen.'
+    vehicle: 'Unidad JV Habilitada + Repaso 45 min',
+    description: 'Unidad habilitada con VTV y seguro de enseñanza al día + clase previa personalizada de 45 minutos.'
   }
 ];
 
@@ -137,24 +145,25 @@ function buildSlotsForDate(dateStr) {
 
   const hours =
     day === 6
-      ? ['09:00', '10:00', '11:00', '12:00']
-      : ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+      ? ['09:00', '09:45', '10:30', '11:15', '12:00']
+      : ['08:00', '09:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00'];
 
-  const seed = dateStr.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
-  const slots = hours.map((time, idx) => ({
+  const slots = hours.map((time) => ({
     time,
-    available: (seed + idx * 3) % 7 !== 0,
-    instructor: 'Equipo JV Hurlingham'
+    available: true,
+    status: 'to_confirm'
   }));
 
   return {
     closed: false,
+    requiresConfirmation: true,
+    classDurationMin: 45,
     dayType: day === 6 ? 'Sábado (9 a 13 hs)' : 'Lunes a Viernes (8 a 18 hs)',
     slots
   };
 }
 
-function buildGoogleCalendarLink({ title, date, time, durationMin = 60, details, location }) {
+function buildGoogleCalendarLink({ title, date, time, durationMin = 45, details, location }) {
   const [y, m, d] = date.split('-');
   const [hh, mm] = time.split(':').map(Number);
   const startStr = `${y}${m}${d}T${String(hh).padStart(2, '0')}${String(mm).padStart(2, '0')}00`;
@@ -274,19 +283,19 @@ export default {
             title: calendarTitle,
             date,
             time,
-            durationMin: 60,
+            durationMin: 45,
             details: calendarDetails,
             location: address
           });
 
           const waMessage = [
-            `Hola JV Autoescuela Hurlingham! Quiero confirmar mi pre-reserva de turno:`,
+            `Hola JV Autoescuela Hurlingham! Quiero confirmar disponibilidad para esta pre-reserva:`,
             `• Código: ${bookingCode}`,
             `• Nombre: ${name}`,
             `• Zona: ${neighborhood || 'Hurlingham'}`,
             `• Vehículo: ${vehicleLabel}`,
-            course ? `• Curso elegido: ${course.title}` : null,
-            `• Fecha y hora: ${date} a las ${time} hs`,
+            course ? `• Modalidad elegida: ${course.title}` : null,
+            `• Fecha y hora preferida: ${date} a las ${time} hs (clase de 45 min)`,
             `• Nivel: ${experience || 'A definir'}`,
             notes ? `• Nota: ${notes}` : null
           ]
@@ -300,6 +309,7 @@ export default {
             booking: {
               code: bookingCode,
               status: 'pending_confirmation',
+              durationMin: 45,
               name,
               phone,
               neighborhood: neighborhood || 'Hurlingham',

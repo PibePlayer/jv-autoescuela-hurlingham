@@ -17,61 +17,102 @@ const state = {
 
 let heroTimer = null;
 
-function renderHeroSlide(index) {
-  state.heroIndex = (index + HERO_SLIDES.length) % HERO_SLIDES.length;
-  const s = HERO_SLIDES[state.heroIndex];
-
-  const eyebrow = document.getElementById('hero-eyebrow');
-  const title = document.getElementById('hero-title');
-  const lead = document.getElementById('hero-lead');
-  const img = document.getElementById('hero-img');
-  const capTitle = document.getElementById('hero-cap-title');
-  const capSub = document.getElementById('hero-cap-sub');
+function buildHeroSlidesOnce() {
+  const track = document.getElementById('hero-track');
   const dots = document.getElementById('hero-dots');
-  const content = document.getElementById('hero-slide-content');
+  if (!track) return;
 
-  if (content) {
-    content.classList.remove('panel-animate');
-    void content.offsetWidth;
-    content.classList.add('panel-animate');
-  }
+  track.innerHTML = HERO_SLIDES.map((s, idx) => {
+    const HeadingTag = idx === 0 ? 'h1' : 'h2';
+    const headingStyle =
+      idx === 0
+        ? ''
+        : 'font-family: var(--font-display); font-size: clamp(2.1rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.025em; margin: 0 0 18px;';
 
-  if (eyebrow) eyebrow.textContent = s.eyebrow;
-  if (title) title.textContent = s.title;
-  if (lead) lead.textContent = s.lead;
-  if (img) img.src = s.image;
-  if (capTitle) capTitle.innerHTML = `<strong>${s.captionTitle}</strong>`;
-  if (capSub) capSub.textContent = s.captionSub;
+    return `
+      <div class="hero-slide ${idx === 0 ? 'is-active' : ''}">
+        <div class="hero-grid">
+          <div>
+            <span class="hero-eyebrow">${s.eyebrow}</span>
+            <${HeadingTag} style="${headingStyle}">${s.title}</${HeadingTag}>
+            <p class="hero-lead">${s.lead}</p>
+            <div class="hero-ctas">
+              <a href="${s.ctaPrimary.href}" class="btn btn-primary">${s.ctaPrimary.label}</a>
+              <a
+                href="${s.ctaSecondary.href}"
+                ${s.ctaSecondary.external ? 'target="_blank" rel="noopener noreferrer"' : ''}
+                class="btn btn-outline-light"
+              >
+                ${s.ctaSecondary.label}
+              </a>
+              <a
+                href="https://wa.me/${WHATSAPP_NUMBER}?text=Hola%20JV%20Autoescuela%20Hurlingham!%20Quiero%20consultar%20por%20clases%20de%20manejo."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-whatsapp"
+              >
+                WhatsApp 11-6817-2577
+              </a>
+            </div>
+          </div>
+          <div>
+            <div class="hero-photo-frame">
+              <img src="${s.image}" alt="${s.captionTitle}" width="960" height="600" />
+              <div class="hero-caption-bar">
+                <span><strong>${s.captionTitle}</strong></span>
+                <span>${s.captionSub}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
 
   if (dots) {
     dots.innerHTML = HERO_SLIDES.map(
       (_, i) =>
-        `<button type="button" class="hero-dot ${i === state.heroIndex ? 'is-active' : ''}" data-hero-dot="${i}" aria-label="Slide ${
+        `<button type="button" class="hero-dot ${i === 0 ? 'is-active' : ''}" data-hero-dot="${i}" aria-label="Slide ${
           i + 1
         }"></button>`
     ).join('');
     dots.querySelectorAll('[data-hero-dot]').forEach((btn) => {
       btn.addEventListener('click', () => {
-        renderHeroSlide(Number(btn.getAttribute('data-hero-dot')));
+        goToHeroSlide(Number(btn.getAttribute('data-hero-dot')));
         restartHeroAutoplay();
       });
     });
   }
 }
 
+function goToHeroSlide(index) {
+  state.heroIndex = (index + HERO_SLIDES.length) % HERO_SLIDES.length;
+  const track = document.getElementById('hero-track');
+  if (track) {
+    track.style.transform = `translate3d(-${state.heroIndex * 100}%, 0, 0)`;
+  }
+  document.querySelectorAll('#hero-track .hero-slide').forEach((slide, idx) => {
+    slide.classList.toggle('is-active', idx === state.heroIndex);
+  });
+  document.querySelectorAll('#hero-dots .hero-dot').forEach((dot, idx) => {
+    dot.classList.toggle('is-active', idx === state.heroIndex);
+  });
+}
+
 function restartHeroAutoplay() {
   if (heroTimer) clearInterval(heroTimer);
-  heroTimer = setInterval(() => renderHeroSlide(state.heroIndex + 1), 5500);
+  heroTimer = setInterval(() => goToHeroSlide(state.heroIndex + 1), 9000);
 }
 
 function setupHeroSlider() {
-  renderHeroSlide(0);
+  buildHeroSlidesOnce();
+  goToHeroSlide(0);
   document.getElementById('hero-prev')?.addEventListener('click', () => {
-    renderHeroSlide(state.heroIndex - 1);
+    goToHeroSlide(state.heroIndex - 1);
     restartHeroAutoplay();
   });
   document.getElementById('hero-next')?.addEventListener('click', () => {
-    renderHeroSlide(state.heroIndex + 1);
+    goToHeroSlide(state.heroIndex + 1);
     restartHeroAutoplay();
   });
   const sliderEl = document.getElementById('hero-slider');
@@ -429,11 +470,13 @@ function computeLocalSlots(dateStr) {
   }
   const hours =
     day === 6
-      ? ['09:00', '10:00', '11:00', '12:00']
-      : ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
+      ? ['09:00', '09:45', '10:30', '11:15', '12:00']
+      : ['08:00', '09:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00'];
 
   return {
     closed: false,
+    requiresConfirmation: true,
+    classDurationMin: 45,
     dayType: day === 6 ? 'Sábado (9 a 13 hs)' : 'Lunes a Viernes (8 a 18 hs)',
     slots: hours.map((time) => ({ time, available: true }))
   };
@@ -466,7 +509,10 @@ async function loadAvailability() {
     return;
   }
 
-  helper.textContent = `Horario de atención: ${data.dayType}.`;
+  helper.textContent =
+    data.source === 'google-calendar'
+      ? `Disponibilidad en tiempo real (${data.dayType} · clases de 45 min).`
+      : `Franja horaria preferida (${data.dayType} · clases de 45 min). Confirmamos instructor y unidad disponible por WhatsApp.`;
   grid.innerHTML = data.slots
     .map(
       (s) => `
@@ -498,7 +544,7 @@ async function handleBookingSubmit(e) {
   const submitBtn = document.getElementById('booking-submit-btn');
 
   if (!state.selectedSlot) {
-    alert('Por favor elegí un día abierto (Lunes a Sábado) y un horario disponible.');
+    alert('Por favor elegí un día abierto (Lunes a Sábado) y un horario preferido.');
     return;
   }
 
@@ -516,7 +562,7 @@ async function handleBookingSubmit(e) {
 
   if (submitBtn) {
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Generando turno...';
+    submitBtn.textContent = 'Generando solicitud...';
   }
 
   let booking = null;
@@ -533,24 +579,27 @@ async function handleBookingSubmit(e) {
   } finally {
     if (submitBtn) {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Confirmar Pre-Reserva y Google Calendar';
+      submitBtn.textContent = 'Solicitar Turno y Agendar (45 min)';
     }
   }
 
   if (!booking) {
     const [y, m, d] = payload.date.split('-');
     const [hh, mm] = payload.time.split(':').map(Number);
+    const totalEndMin = hh * 60 + mm + 45;
+    const endH = Math.floor(totalEndMin / 60);
+    const endM = totalEndMin % 60;
     const startStr = `${y}${m}${d}T${String(hh).padStart(2, '0')}${String(mm).padStart(2, '0')}00`;
-    const endStr = `${y}${m}${d}T${String(hh + 1).padStart(2, '0')}${String(mm).padStart(2, '0')}00`;
+    const endStr = `${y}${m}${d}T${String(endH).padStart(2, '0')}${String(endM).padStart(2, '0')}00`;
     const calParams = new URLSearchParams({
       action: 'TEMPLATE',
       text: `Clase JV Autoescuela (${payload.category})`,
       dates: `${startStr}/${endStr}`,
       ctz: 'America/Argentina/Buenos_Aires',
-      details: `Alumno: ${payload.name} | Tel: ${payload.phone} | Zona: ${payload.neighborhood}`,
+      details: `Alumno: ${payload.name} | Tel: ${payload.phone} | Zona: ${payload.neighborhood} | Duración: 45 min`,
       location: 'Av. Gobernador Vergara 3855, Hurlingham'
     });
-    const waText = `Hola JV Autoescuela Hurlingham! Soy ${payload.name} (${payload.neighborhood}). Quiero reservar clase de ${payload.category} para el ${payload.date} a las ${payload.time} hs.`;
+    const waText = `Hola JV Autoescuela Hurlingham! Soy ${payload.name} (${payload.neighborhood}). Quiero consultar disponibilidad para clase de 45 min (${payload.category}) el ${payload.date} a las ${payload.time} hs.`;
     booking = {
       code: `JV-${Date.now().toString().slice(-5)}`,
       vehicleLabel: payload.category,
@@ -564,16 +613,17 @@ async function handleBookingSubmit(e) {
   if (resultBox) {
     resultBox.hidden = false;
     resultBox.innerHTML = `
-      <h4>¡Pre-reserva generada! Código ${booking.code}</h4>
+      <h4>Solicitud generada · Código ${booking.code}</h4>
       <p style="margin: 0; font-size: 0.92rem;">
-        Turno solicitado para <strong>${booking.date} a las ${booking.time} hs</strong> (${booking.vehicleLabel}).
+        Horario solicitado: <strong>${booking.date} a las ${booking.time} hs (45 min)</strong> · ${booking.vehicleLabel}.
+        Confirmá disponibilidad de instructor y vehículo por WhatsApp:
       </p>
       <div class="booking-status-actions">
-        <a href="${booking.googleCalendarUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">
-          + Agendar en Google Calendar
-        </a>
         <a href="${booking.whatsappUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-sm">
-          Confirmar por WhatsApp
+          Confirmar con JV por WhatsApp
+        </a>
+        <a href="${booking.googleCalendarUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">
+          + Guardar recordatorio en Google Calendar
         </a>
       </div>
     `;

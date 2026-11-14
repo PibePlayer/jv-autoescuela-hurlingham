@@ -403,6 +403,32 @@ textarea {
   pointer-events: none;
 }
 
+.hero-viewport {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  margin: -6px -4px -16px;
+}
+
+.hero-track {
+  display: flex;
+  transition: transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.hero-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 6px 4px 16px;
+  opacity: 0.15;
+  transition: opacity 0.95s ease;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1.02fr 0.98fr;
