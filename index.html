@@ -8,7 +8,7 @@
       name="description"
       content="JV Autoescuela N° 1 en Hurlingham (4.8★, +256 reseñas). Aprendé a manejar en nuestro VW Gol rojo con doble comando, caja automática, motos en todas las cilindradas, camiones y colectivos."
     />
-    <link rel="icon" type="image/svg+xml" href="/images/logo-jv.svg" />
+    <link rel="icon" type="image/png" href="/images/logo-jv-real.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -54,7 +54,13 @@
     <header class="site-header" id="site-header">
       <div class="container header-inner">
         <a href="#inicio" class="brand" aria-label="JV Autoescuela Hurlingham">
-          <img src="/images/logo-jv.svg" alt="Logo JV Autoescuela Hurlingham" width="210" height="52" style="height: 46px; width: auto;" />
+          <div class="brand-real-wrap">
+            <img src="/images/logo-jv-real.png" alt="Logo oficial JV Autoescuela" class="brand-real-img" width="48" height="48" />
+            <div class="brand-text">
+              <span class="brand-name"><span>JV</span> AUTOESCUELA</span>
+              <span class="brand-sub">Hurlingham · Hacemos la diferencia</span>
+            </div>
+          </div>
         </a>
 
         <nav class="nav-links" id="main-nav" aria-label="Navegación principal">
@@ -84,58 +90,68 @@
     </header>
 
     <main id="inicio">
-      <!-- HERO DESPEJADO -->
-      <section class="hero">
-        <div class="container hero-grid">
-          <div class="hero-animate-1">
-            <span class="hero-eyebrow">Autoescuela N° 1 de Hurlingham · Habilitada PBA</span>
-            <h1>Aprendé a manejar de verdad en Hurlingham</h1>
-            <p class="hero-lead">
-              Clases individuales con instructores matriculados en nuestro <strong>VW Gol rojo con doble comando</strong>,
-              unidades con <strong>caja automática</strong>, <strong>motos de todas las cilindradas</strong> y
-              <strong>camiones y colectivos</strong>.
-            </p>
-            <div class="hero-ctas">
-              <a href="#cursos" class="btn btn-primary">Elegir Curso</a>
-              <a href="#turnero" class="btn btn-outline-light">Reservar Turno</a>
-              <a
-                href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela%20Hurlingham!%20Quiero%20consultar%20por%20clases%20de%20manejo."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn-whatsapp"
-              >
-                WhatsApp 11-6817-2577
-              </a>
+      <!-- HERO SLIDER FLUIDO (Inspirado en Driver's School) -->
+      <section class="hero" id="hero-slider">
+        <div class="container">
+          <div class="hero-grid" id="hero-slide-content">
+            <div class="hero-animate-1">
+              <span class="hero-eyebrow" id="hero-eyebrow">Autoescuela N° 1 de Hurlingham · Habilitada PBA</span>
+              <h1 id="hero-title">Aprendé a manejar de verdad en Hurlingham.</h1>
+              <p class="hero-lead" id="hero-lead">
+                Clases individuales con instructores matriculados en nuestro <strong>VW Gol rojo con doble comando</strong>.
+                Hacemos la diferencia desde el primer día.
+              </p>
+              <div class="hero-ctas" id="hero-ctas">
+                <a href="#cursos" class="btn btn-primary">Elegir Curso</a>
+                <a href="#turnero" class="btn btn-outline-light">Reservar Turno</a>
+                <a
+                  href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela%20Hurlingham!%20Quiero%20consultar%20por%20clases%20de%20manejo."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn btn-whatsapp"
+                >
+                  WhatsApp 11-6817-2577
+                </a>
+              </div>
+
+              <div class="hero-trust-strip">
+                <div class="trust-metric">
+                  <strong>4.8 ★ Google</strong>
+                  <span>+256 alumnos en Hurlingham</span>
+                </div>
+                <div class="trust-metric">
+                  <strong>Doble Comando</strong>
+                  <span>VTV y seguro de enseñanza al día</span>
+                </div>
+                <div class="trust-metric">
+                  <strong>Desde el 2000</strong>
+                  <span>Formación vial real, sin improvisar</span>
+                </div>
+              </div>
             </div>
 
-            <div class="hero-trust-strip">
-              <div class="trust-metric">
-                <strong>4.8 ★ Google</strong>
-                <span>+256 alumnos en Hurlingham</span>
-              </div>
-              <div class="trust-metric">
-                <strong>Doble Comando</strong>
-                <span>VTV y seguro de enseñanza al día</span>
-              </div>
-              <div class="trust-metric">
-                <strong>Desde el 2000</strong>
-                <span>Formación vial real, sin improvisar</span>
+            <div class="hero-animate-2">
+              <div class="hero-photo-frame">
+                <img
+                  id="hero-img"
+                  src="/images/gol-rojo-real.png"
+                  alt="Flota real de JV Autoescuela Hurlingham con VW Gol rojo ploteado"
+                  width="960"
+                  height="600"
+                />
+                <div class="hero-caption-bar">
+                  <span id="hero-cap-title"><strong>Flota Real JV Autoescuela · Hurlingham</strong></span>
+                  <span id="hero-cap-sub">VW Gol Rojo Doble Comando · 11-6817-2577</span>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="hero-animate-2">
-            <div class="hero-photo-frame">
-              <img
-                src="/images/gol-rojo-jv.jpg"
-                alt="Volkswagen Gol rojo ploteado de JV Autoescuela Hurlingham con doble comando"
-                width="960"
-                height="600"
-              />
-              <div class="hero-caption-bar">
-                <span><strong>Insignia JV en Hurlingham:</strong> VW Gol Rojo Doble Comando</span>
-                <span>Av. Vergara 3855 · Clases de 60 min</span>
-              </div>
+          <div class="hero-slider-controls">
+            <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Diapositivas"></div>
+            <div class="hero-arrows">
+              <button type="button" class="hero-arrow" id="hero-prev" aria-label="Anterior">←</button>
+              <button type="button" class="hero-arrow" id="hero-next" aria-label="Siguiente">→</button>
             </div>
           </div>
         </div>
@@ -451,8 +467,12 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <div style="background: #ffffff; padding: 8px 14px; border-radius: 10px; display: inline-flex; margin-bottom: 14px;">
-              <img src="/images/logo-jv.svg" alt="Logo JV Autoescuela Hurlingham" width="200" height="50" style="height: 42px; width: auto;" />
+            <div class="brand-real-wrap" style="margin-bottom: 14px;">
+              <img src="/images/logo-jv-real.png" alt="Logo oficial JV Autoescuela Hurlingham" class="brand-real-img" width="52" height="52" style="width: 52px; height: 52px;" />
+              <div class="brand-text">
+                <span class="brand-name" style="color: #fff;"><span>JV</span> AUTOESCUELA</span>
+                <span class="brand-sub" style="color: #94a3b8;">Hurlingham · Hacemos la diferencia</span>
+              </div>
             </div>
             <p style="font-size: 0.9rem; margin: 0; max-width: 38ch;">
               Escuela de conductores matriculada en Hurlingham (Ley 13.927). Auto manual VW Gol rojo, automático, motos y gran porte.

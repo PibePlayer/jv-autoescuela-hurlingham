@@ -1,9 +1,10 @@
-import { FALLBACK_COURSES, FLEET_CATEGORIES, QUIZ_QUESTIONS } from './scripts/data.js';
+import { FALLBACK_COURSES, FLEET_CATEGORIES, HERO_SLIDES, QUIZ_QUESTIONS } from './scripts/data.js';
 
 const WHATSAPP_NUMBER = '5491168172577';
 
 const state = {
   courses: [...FALLBACK_COURSES],
+  heroIndex: 0,
   activeFleet: 'manual',
   activeFilter: 'all',
   cart: loadCart(),
@@ -13,6 +14,71 @@ const state = {
   quizScore: 0,
   quizAnswered: false
 };
+
+let heroTimer = null;
+
+function renderHeroSlide(index) {
+  state.heroIndex = (index + HERO_SLIDES.length) % HERO_SLIDES.length;
+  const s = HERO_SLIDES[state.heroIndex];
+
+  const eyebrow = document.getElementById('hero-eyebrow');
+  const title = document.getElementById('hero-title');
+  const lead = document.getElementById('hero-lead');
+  const img = document.getElementById('hero-img');
+  const capTitle = document.getElementById('hero-cap-title');
+  const capSub = document.getElementById('hero-cap-sub');
+  const dots = document.getElementById('hero-dots');
+  const content = document.getElementById('hero-slide-content');
+
+  if (content) {
+    content.classList.remove('panel-animate');
+    void content.offsetWidth;
+    content.classList.add('panel-animate');
+  }
+
+  if (eyebrow) eyebrow.textContent = s.eyebrow;
+  if (title) title.textContent = s.title;
+  if (lead) lead.textContent = s.lead;
+  if (img) img.src = s.image;
+  if (capTitle) capTitle.innerHTML = `<strong>${s.captionTitle}</strong>`;
+  if (capSub) capSub.textContent = s.captionSub;
+
+  if (dots) {
+    dots.innerHTML = HERO_SLIDES.map(
+      (_, i) =>
+        `<button type="button" class="hero-dot ${i === state.heroIndex ? 'is-active' : ''}" data-hero-dot="${i}" aria-label="Slide ${
+          i + 1
+        }"></button>`
+    ).join('');
+    dots.querySelectorAll('[data-hero-dot]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        renderHeroSlide(Number(btn.getAttribute('data-hero-dot')));
+        restartHeroAutoplay();
+      });
+    });
+  }
+}
+
+function restartHeroAutoplay() {
+  if (heroTimer) clearInterval(heroTimer);
+  heroTimer = setInterval(() => renderHeroSlide(state.heroIndex + 1), 5500);
+}
+
+function setupHeroSlider() {
+  renderHeroSlide(0);
+  document.getElementById('hero-prev')?.addEventListener('click', () => {
+    renderHeroSlide(state.heroIndex - 1);
+    restartHeroAutoplay();
+  });
+  document.getElementById('hero-next')?.addEventListener('click', () => {
+    renderHeroSlide(state.heroIndex + 1);
+    restartHeroAutoplay();
+  });
+  const sliderEl = document.getElementById('hero-slider');
+  sliderEl?.addEventListener('mouseenter', () => heroTimer && clearInterval(heroTimer));
+  sliderEl?.addEventListener('mouseleave', restartHeroAutoplay);
+  restartHeroAutoplay();
+}
 
 function loadCart() {
   try {
@@ -673,6 +739,7 @@ function init() {
   document.getElementById('booking-category')?.addEventListener('change', loadAvailability);
   document.getElementById('booking-form')?.addEventListener('submit', handleBookingSubmit);
 
+  setupHeroSlider();
   renderFleetShowcase();
   renderCourses();
   populateBookingCourseSelect();

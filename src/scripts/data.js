@@ -1,11 +1,44 @@
+export const HERO_SLIDES = [
+  {
+    eyebrow: 'Autoescuela N° 1 de Hurlingham · Habilitada PBA',
+    title: 'Aprendé a manejar de verdad en Hurlingham.',
+    lead: 'Clases individuales con instructores matriculados en nuestro VW Gol rojo con doble comando. Hacemos la diferencia desde el primer día.',
+    ctaPrimary: { label: 'Elegir Curso', href: '#cursos' },
+    ctaSecondary: { label: 'Reservar Turno', href: '#turnero' },
+    image: '/images/gol-rojo-real.png',
+    captionTitle: 'Flota Real JV Autoescuela · Hurlingham',
+    captionSub: 'VW Gol Rojo Doble Comando · 11-6817-2577'
+  },
+  {
+    eyebrow: 'Todas las Categorías en Hurlingham',
+    title: 'Auto manual, automático, motos y gran porte.',
+    lead: 'Capacitación real para autos (caja manual o automática), motos en todas las cilindradas, camiones y colectivos profesionales.',
+    ctaPrimary: { label: 'Ver Categorías', href: '#categorias' },
+    ctaSecondary: { label: 'Consultar por WhatsApp', href: 'https://wa.me/5491168172577', external: true },
+    image: '/images/auto-automatico-jv.jpg',
+    captionTitle: 'Todas las Licencias · Cat. A, B, C, D y E',
+    captionSub: 'Preparación práctica y teórica PBA'
+  },
+  {
+    eyebrow: 'Calidad Profesional vs. Improvisación',
+    title: 'Hacemos la diferencia en cada clase.',
+    lead: 'Unidades con VTV y seguro de enseñanza al día, 60 minutos reales al volante por Av. Vergara y seguimiento paciente hasta tu licencia.',
+    ctaPrimary: { label: 'Por qué elegir JV', href: '#calidad' },
+    ctaSecondary: { label: 'Sacar Turno Online', href: '#turnero' },
+    image: '/images/motos-jv.jpg',
+    captionTitle: '4.8 ★ en Google (+256 reseñas reales)',
+    captionSub: 'Av. Gobernador Vergara 3855, Hurlingham'
+  }
+];
+
 export const FLEET_CATEGORIES = [
   {
     id: 'manual',
     tabLabel: 'Auto Manual · Gol Rojo',
     license: 'Categoría B1 · Caja Manual',
     title: 'Auto Caja Manual en nuestro VW Gol Rojo',
-    image: '/images/gol-rojo-jv.jpg',
-    imageAlt: 'Volkswagen Gol rojo ploteado JV Autoescuela Hurlingham',
+    image: '/images/gol-rojo-real.png',
+    imageAlt: 'Volkswagen Gol rojo real ploteado JV Autoescuela Hurlingham',
     summary:
       'Nuestro clásico VW Gol rojo ploteado con doble comando certificado. Aprendés embrague, cambios, arranque en pendiente y estacionamiento real por las calles y avenidas de Hurlingham.',
     bullets: [

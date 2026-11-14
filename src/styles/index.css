@@ -507,6 +507,102 @@ textarea {
   color: #e5e7eb;
 }
 
+.hero-slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 28px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hero-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.32);
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.3s var(--ease-fluid), background-color 0.3s ease;
+}
+
+.hero-dot.is-active {
+  width: 28px;
+  background: var(--jv-red);
+}
+
+.hero-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.hero-arrow {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(20, 22, 25, 0.55);
+  color: var(--jv-white);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  transition: all 0.22s var(--ease-fluid);
+}
+
+.hero-arrow:hover {
+  background: var(--jv-red);
+  border-color: var(--jv-red);
+}
+
+.brand-real-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.brand-real-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 3px 10px rgba(212, 25, 32, 0.25);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  color: var(--jv-asphalt);
+}
+
+.brand-name span {
+  color: var(--jv-red);
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--jv-muted);
+}
+
 /* ==========================================================================
    SECTIONS CON MAYOR RESPIRACIÓN
    ========================================================================== */
