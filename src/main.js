@@ -1,9 +1,10 @@
-import { FALLBACK_COURSES, QUIZ_QUESTIONS } from './scripts/data.js';
+import { FALLBACK_COURSES, FLEET_CATEGORIES, QUIZ_QUESTIONS } from './scripts/data.js';
 
 const WHATSAPP_NUMBER = '5491168172577';
 
 const state = {
   courses: [...FALLBACK_COURSES],
+  activeFleet: 'manual',
   activeFilter: 'all',
   cart: loadCart(),
   paymentMethod: 'transferencia',
@@ -15,7 +16,7 @@ const state = {
 
 function loadCart() {
   try {
-    const raw = localStorage.getItem('jv_cart_v1');
+    const raw = localStorage.getItem('jv_quote_cart_v1');
     return raw ? JSON.parse(raw) : [];
   } catch {
     return [];
@@ -24,16 +25,80 @@ function loadCart() {
 
 function saveCart() {
   try {
-    localStorage.setItem('jv_cart_v1', JSON.stringify(state.cart));
+    localStorage.setItem('jv_quote_cart_v1', JSON.stringify(state.cart));
   } catch {
-    // ignore storage errors
+    // ignore
   }
 }
 
-function formatArs(amount) {
-  return `$${Number(amount).toLocaleString('es-AR')}`;
+/* ==========================================================================
+   FLOTA INTERACTIVA CON TRANSICIÓN FLUIDA
+   ========================================================================== */
+function renderFleetShowcase() {
+  const tabsEl = document.getElementById('fleet-tabs');
+  const boxEl = document.getElementById('fleet-showcase-container');
+  if (!tabsEl || !boxEl) return;
+
+  tabsEl.innerHTML = FLEET_CATEGORIES.map(
+    (f) => `
+      <button
+        type="button"
+        class="fleet-tab ${f.id === state.activeFleet ? 'is-active' : ''}"
+        data-fleet-tab="${f.id}"
+        role="tab"
+        aria-selected="${f.id === state.activeFleet}"
+      >
+        ${f.tabLabel}
+      </button>
+    `
+  ).join('');
+
+  tabsEl.querySelectorAll('[data-fleet-tab]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      state.activeFleet = btn.getAttribute('data-fleet-tab');
+      renderFleetShowcase();
+    });
+  });
+
+  const current = FLEET_CATEGORIES.find((f) => f.id === state.activeFleet) || FLEET_CATEGORIES[0];
+  boxEl.innerHTML = `
+    <article class="fleet-showcase panel-animate">
+      <div class="fleet-showcase-media">
+        <img src="${current.image}" alt="${current.imageAlt}" />
+        <span class="fleet-license-tag">${current.license}</span>
+      </div>
+      <div class="fleet-showcase-content">
+        <h3>${current.title}</h3>
+        <p>${current.summary}</p>
+        <ul class="fleet-specs">
+          ${current.bullets.map((b) => `<li>${b}</li>`).join('')}
+        </ul>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <button type="button" class="btn btn-primary btn-sm" id="fleet-book-btn">
+            Reservar Turno en esta Categoría
+          </button>
+          <button type="button" class="btn btn-outline btn-sm" id="fleet-courses-btn">
+            Ver Packs Disponibles
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+
+  document.getElementById('fleet-book-btn')?.addEventListener('click', () => jumpToBooking(current.id));
+  document.getElementById('fleet-courses-btn')?.addEventListener('click', () => {
+    state.activeFilter = current.id;
+    document.querySelectorAll('.filter-btn').forEach((b) => {
+      b.classList.toggle('is-active', b.getAttribute('data-category') === current.id);
+    });
+    renderCourses();
+    document.getElementById('cursos')?.scrollIntoView({ behavior: 'smooth' });
+  });
 }
 
+/* ==========================================================================
+   CURSOS SIN PRECIOS INVENTADOS
+   ========================================================================== */
 async function fetchCourses() {
   try {
     const res = await fetch('/api/courses');
@@ -43,7 +108,7 @@ async function fetchCourses() {
       state.courses = data.courses;
     }
   } catch {
-    // Fallback local ya cargado
+    // fallback local
   }
   renderCourses();
   populateBookingCourseSelect();
@@ -59,47 +124,32 @@ function renderCourses() {
       : state.courses.filter((c) => c.category === state.activeFilter);
 
   grid.innerHTML = filtered
-    .map((course) => {
-      const cashPrice = Math.round(course.priceArs * 0.9);
-      const installmentNote =
-        course.installments > 1
-          ? `o ${course.installments} cuotas de ${formatArs(Math.round(course.priceArs / course.installments))}`
-          : 'Pago único / transferencia';
-
-      return `
-        <article class="course-card ${course.highlight ? 'is-featured' : ''}">
-          <div class="course-top">
-            <span class="course-cat">${course.categoryLabel}</span>
-            <span class="course-badge">${course.badge}</span>
-          </div>
-          <h3>${course.title}</h3>
-          <p class="course-desc">${course.description}</p>
-          <ul class="course-includes">
-            ${course.includes.map((inc) => `<li>${inc}</li>`).join('')}
-          </ul>
-          <div class="course-pricing">
-            <div class="price-row">
-              <span class="price-value">${formatArs(cashPrice)}</span>
-              <span style="font-size: 0.78rem; color: var(--jv-muted);">Contado / Transf.</span>
-            </div>
-            <div class="price-note">Lista: ${formatArs(course.priceArs)} · ${installmentNote}</div>
-            <div class="course-btns">
-              <button type="button" class="btn btn-primary btn-sm" data-add-cart="${course.id}">
-                + Al Carrito
-              </button>
-              <button
-                type="button"
-                class="btn btn-outline btn-sm"
-                data-select-booking="${course.id}"
-                data-select-cat="${course.category}"
-              >
-                Sacar Turno
-              </button>
-            </div>
-          </div>
-        </article>
-      `;
-    })
+    .map(
+      (course) => `
+      <article class="course-card panel-animate ${course.highlight ? 'is-featured' : ''}">
+        <span class="course-cat">${course.categoryLabel}</span>
+        <span class="course-badge">${course.badge}</span>
+        <h3>${course.title}</h3>
+        <p class="course-desc">${course.description}</p>
+        <div class="course-meta">
+          ${course.classesCount} ${course.classesCount === 1 ? 'encuentro' : 'clases'} · ${course.durationMin} min · ${course.vehicle}
+        </div>
+        <div class="course-btns">
+          <button type="button" class="btn btn-primary btn-sm" data-add-cart="${course.id}">
+            Cotizar
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline btn-sm"
+            data-select-booking="${course.id}"
+            data-select-cat="${course.category}"
+          >
+            Turno
+          </button>
+        </div>
+      </article>
+    `
+    )
     .join('');
 
   grid.querySelectorAll('[data-add-cart]').forEach((btn) => {
@@ -111,9 +161,7 @@ function renderCourses() {
 
   grid.querySelectorAll('[data-select-booking]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const courseId = btn.getAttribute('data-select-booking');
-      const cat = btn.getAttribute('data-select-cat');
-      jumpToBooking(cat, courseId);
+      jumpToBooking(btn.getAttribute('data-select-cat'), btn.getAttribute('data-select-booking'));
     });
   });
 }
@@ -126,7 +174,7 @@ function populateBookingCourseSelect() {
   state.courses.forEach((c) => {
     const opt = document.createElement('option');
     opt.value = c.id;
-    opt.textContent = `${c.title} (${formatArs(Math.round(c.priceArs * 0.9))} trans.)`;
+    opt.textContent = `${c.title} (${c.vehicle})`;
     select.appendChild(opt);
   });
   if (current) select.value = current;
@@ -146,15 +194,12 @@ function jumpToBooking(category, courseId = '') {
 }
 
 /* ==========================================================================
-   CARRITO DE COMPRA ONLINE
+   COTIZADOR / CARRITO DE CONSULTA
    ========================================================================== */
 function addToCart(courseId) {
   const existing = state.cart.find((item) => item.id === courseId);
-  if (existing) {
-    existing.qty = Math.min(10, existing.qty + 1);
-  } else {
-    state.cart.push({ id: courseId, qty: 1 });
-  }
+  if (existing) existing.qty = Math.min(10, existing.qty + 1);
+  else state.cart.push({ id: courseId, qty: 1 });
   saveCart();
   renderCart();
 }
@@ -163,9 +208,7 @@ function updateCartQty(courseId, delta) {
   const item = state.cart.find((i) => i.id === courseId);
   if (!item) return;
   item.qty += delta;
-  if (item.qty <= 0) {
-    state.cart = state.cart.filter((i) => i.id !== courseId);
-  }
+  if (item.qty <= 0) state.cart = state.cart.filter((i) => i.id !== courseId);
   saveCart();
   renderCart();
 }
@@ -176,15 +219,14 @@ function renderCart() {
   const footer = document.getElementById('cart-footer');
   if (!countEl || !container || !footer) return;
 
-  const totalItems = state.cart.reduce((sum, i) => sum + i.qty, 0);
-  countEl.textContent = String(totalItems);
+  countEl.textContent = String(state.cart.reduce((sum, i) => sum + i.qty, 0));
 
   if (state.cart.length === 0) {
     container.innerHTML = `
       <div style="text-align: center; padding: 36px 12px; color: var(--jv-muted);">
-        <p style="font-weight: 700; color: var(--jv-asphalt); margin-bottom: 6px;">Tu carrito está vacío</p>
+        <p style="font-weight: 700; color: var(--jv-asphalt); margin-bottom: 6px;">Sin cursos seleccionados</p>
         <p style="font-size: 0.9rem; margin: 0 0 18px;">
-          Elegí un pack de clases de auto manual, automático, moto o gran porte para calcular tu presupuesto online.
+          Elegí los cursos que te interesan y te pasamos el presupuesto actualizado por WhatsApp.
         </p>
         <a href="#cursos" class="btn btn-primary btn-sm" id="cart-browse-link">Ver Cursos</a>
       </div>
@@ -194,25 +236,21 @@ function renderCart() {
     return;
   }
 
-  let subtotal = 0;
   container.innerHTML = state.cart
     .map((cartItem) => {
       const course = state.courses.find((c) => c.id === cartItem.id);
       if (!course) return '';
-      const lineTotal = course.priceArs * cartItem.qty;
-      subtotal += lineTotal;
       return `
         <div class="cart-item">
           <div>
             <div class="cart-item-title">${course.title}</div>
-            <div class="cart-item-meta">${course.vehicle} · ${formatArs(course.priceArs)} c/u</div>
-            <div class="qty-controls">
-              <button type="button" class="qty-btn" data-qty-minus="${course.id}" aria-label="Quitar uno">-</button>
-              <span style="font-weight: 700; font-size: 0.9rem;">${cartItem.qty}</span>
-              <button type="button" class="qty-btn" data-qty-plus="${course.id}" aria-label="Agregar uno">+</button>
-            </div>
+            <div class="cart-item-meta">${course.vehicle}</div>
           </div>
-          <div style="font-weight: 800;">${formatArs(lineTotal)}</div>
+          <div class="qty-controls">
+            <button type="button" class="qty-btn" data-qty-minus="${course.id}" aria-label="Quitar">-</button>
+            <span style="font-weight: 700; font-size: 0.9rem;">${cartItem.qty}</span>
+            <button type="button" class="qty-btn" data-qty-plus="${course.id}" aria-label="Sumar">+</button>
+          </div>
         </div>
       `;
     })
@@ -225,38 +263,26 @@ function renderCart() {
     b.addEventListener('click', () => updateCartQty(b.getAttribute('data-qty-plus'), 1))
   );
 
-  const isTransfer = state.paymentMethod === 'transferencia';
-  const discount = isTransfer ? Math.round(subtotal * 0.1) : 0;
-  const total = subtotal - discount;
-
   footer.innerHTML = `
     <div style="margin-bottom: 12px;">
       <label for="cart-payment-method" style="display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 5px;">
-        Medio de pago
+        Forma de pago que te interesa consultar
       </label>
       <select id="cart-payment-method" style="width: 100%; padding: 9px 11px; border-radius: 8px; border: 1px solid var(--jv-border);">
-        <option value="transferencia" ${isTransfer ? 'selected' : ''}>Transferencia / Efectivo (10% OFF)</option>
-        <option value="tarjeta" ${!isTransfer ? 'selected' : ''}>Tarjeta de Crédito / Mercado Pago (Cuotas)</option>
+        <option value="transferencia" ${state.paymentMethod === 'transferencia' ? 'selected' : ''}>Transferencia / Efectivo</option>
+        <option value="tarjeta" ${state.paymentMethod === 'tarjeta' ? 'selected' : ''}>Cuotas / Tarjeta</option>
       </select>
     </div>
-    <div class="summary-line"><span>Subtotal lista</span><span>${formatArs(subtotal)}</span></div>
-    ${
-      discount > 0
-        ? `<div class="summary-line" style="color: var(--jv-green); font-weight: 600;"><span>Descuento transferencia (10%)</span><span>-${formatArs(discount)}</span></div>`
-        : ''
-    }
-    <div class="summary-line summary-total"><span>Total estimado</span><span>${formatArs(total)}</span></div>
-    <button type="button" class="btn btn-primary" style="width: 100%;" id="checkout-submit-btn">
-      Finalizar Pedido Online / WhatsApp
+    <button type="button" class="btn btn-whatsapp" style="width: 100%;" id="checkout-submit-btn">
+      Consultar Valor por WhatsApp
     </button>
     <p style="font-size: 0.76rem; color: var(--jv-muted); text-align: center; margin: 8px 0 0;">
-      Próximamente pago directo con Mercado Pago Checkout Pro integrado.
+      Atención directa de JV Autoescuela Hurlingham · 11-6817-2577
     </p>
   `;
 
   document.getElementById('cart-payment-method')?.addEventListener('change', (e) => {
     state.paymentMethod = e.target.value;
-    renderCart();
   });
 
   document.getElementById('checkout-submit-btn')?.addEventListener('click', handleCheckout);
@@ -266,7 +292,7 @@ async function handleCheckout() {
   const btn = document.getElementById('checkout-submit-btn');
   if (btn) {
     btn.disabled = true;
-    btn.textContent = 'Generando pedido...';
+    btn.textContent = 'Abriendo WhatsApp...';
   }
 
   try {
@@ -284,20 +310,19 @@ async function handleCheckout() {
       return;
     }
   } catch {
-    // Fallback offline/static
+    // fallback
   } finally {
     if (btn) {
       btn.disabled = false;
-      btn.textContent = 'Finalizar Pedido Online / WhatsApp';
+      btn.textContent = 'Consultar Valor por WhatsApp';
     }
   }
 
-  // Fallback si corre sin Worker backend
   const lines = state.cart.map((it) => {
     const c = state.courses.find((x) => x.id === it.id);
     return `- ${it.qty}x ${c ? c.title : it.id}`;
   });
-  const msg = `Hola JV Autoescuela! Quiero consultar/reservar mi pedido:\n${lines.join('\n')}`;
+  const msg = `Hola JV Autoescuela Hurlingham! Quiero consultar el valor de:\n${lines.join('\n')}`;
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 }
 
@@ -321,9 +346,7 @@ function closeCartDrawer() {
 function getNextValidDateString() {
   const now = new Date();
   now.setDate(now.getDate() + 1);
-  if (now.getDay() === 0) {
-    now.setDate(now.getDate() + 1);
-  }
+  if (now.getDay() === 0) now.setDate(now.getDate() + 1);
   return now.toISOString().split('T')[0];
 }
 
@@ -334,7 +357,7 @@ function computeLocalSlots(dateStr) {
   if (day === 0) {
     return {
       closed: true,
-      reason: 'Los domingos la autoescuela permanece cerrada. Atendemos de Lunes a Sábados.',
+      reason: 'Los domingos permanecemos cerrados. Atendemos de Lunes a Sábados.',
       slots: []
     };
   }
@@ -364,16 +387,12 @@ async function loadAvailability() {
   let data;
   try {
     const res = await fetch(`/api/availability?date=${encodeURIComponent(date)}&category=${encodeURIComponent(category)}`);
-    if (res.ok) {
-      data = await res.json();
-    }
+    if (res.ok) data = await res.json();
   } catch {
     data = null;
   }
 
-  if (!data || !data.ok) {
-    data = computeLocalSlots(date);
-  }
+  if (!data || !data.ok) data = computeLocalSlots(date);
 
   if (data.closed) {
     grid.innerHTML = '';
@@ -381,16 +400,11 @@ async function loadAvailability() {
     return;
   }
 
-  helper.textContent = `Horario de atención: ${data.dayType}. Elegí una franja de 60 minutos.`;
+  helper.textContent = `Horario de atención: ${data.dayType}.`;
   grid.innerHTML = data.slots
     .map(
       (s) => `
-      <button
-        type="button"
-        class="slot-btn"
-        data-slot="${s.time}"
-        ${s.available ? '' : 'disabled title="Horario ocupado"'}
-      >
+      <button type="button" class="slot-btn" data-slot="${s.time}" ${s.available ? '' : 'disabled'}>
         ${s.time} hs
       </button>
     `
@@ -398,9 +412,7 @@ async function loadAvailability() {
     .join('');
 
   const firstAvailable = data.slots.find((s) => s.available);
-  if (firstAvailable) {
-    selectSlot(firstAvailable.time);
-  }
+  if (firstAvailable) selectSlot(firstAvailable.time);
 
   grid.querySelectorAll('.slot-btn:not(:disabled)').forEach((btn) => {
     btn.addEventListener('click', () => selectSlot(btn.getAttribute('data-slot')));
@@ -455,7 +467,7 @@ async function handleBookingSubmit(e) {
   } finally {
     if (submitBtn) {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Confirmar Pre-Reserva y Generar Calendario';
+      submitBtn.textContent = 'Confirmar Pre-Reserva y Google Calendar';
     }
   }
 
@@ -472,7 +484,7 @@ async function handleBookingSubmit(e) {
       details: `Alumno: ${payload.name} | Tel: ${payload.phone} | Zona: ${payload.neighborhood}`,
       location: 'Av. Gobernador Vergara 3855, Hurlingham'
     });
-    const waText = `Hola JV Autoescuela! Soy ${payload.name} (${payload.neighborhood}). Quiero reservar clase de ${payload.category} para el ${payload.date} a las ${payload.time} hs.`;
+    const waText = `Hola JV Autoescuela Hurlingham! Soy ${payload.name} (${payload.neighborhood}). Quiero reservar clase de ${payload.category} para el ${payload.date} a las ${payload.time} hs.`;
     booking = {
       code: `JV-${Date.now().toString().slice(-5)}`,
       vehicleLabel: payload.category,
@@ -489,7 +501,6 @@ async function handleBookingSubmit(e) {
       <h4>¡Pre-reserva generada! Código ${booking.code}</h4>
       <p style="margin: 0; font-size: 0.92rem;">
         Turno solicitado para <strong>${booking.date} a las ${booking.time} hs</strong> (${booking.vehicleLabel}).
-        Guardalo en tu Google Calendar y envianos el resumen por WhatsApp para confirmarlo en agenda.
       </p>
       <div class="booking-status-actions">
         <a href="${booking.googleCalendarUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-dark btn-sm">
@@ -504,28 +515,36 @@ async function handleBookingSubmit(e) {
 }
 
 /* ==========================================================================
-   MINI SIMULADOR TEÓRICO PBA
+   EXAMEN TABS & SIMULADOR
    ========================================================================== */
+function setupExamTabs() {
+  const btns = document.querySelectorAll('[data-exam-tab]');
+  const pautasPanel = document.getElementById('exam-pautas-panel');
+  const quizPanel = document.getElementById('exam-quiz-panel');
+  btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-exam-tab');
+      btns.forEach((b) => b.classList.toggle('is-active', b === btn));
+      if (pautasPanel && quizPanel) {
+        pautasPanel.hidden = target !== 'pautas';
+        quizPanel.hidden = target !== 'quiz';
+      }
+    });
+  });
+}
+
 function renderQuiz() {
   const progress = document.getElementById('quiz-progress');
   const body = document.getElementById('quiz-body');
   if (!progress || !body) return;
 
   if (state.quizIndex >= QUIZ_QUESTIONS.length) {
-    progress.textContent = 'Resultado final';
-    const pct = Math.round((state.quizScore / QUIZ_QUESTIONS.length) * 100);
+    progress.textContent = 'Resultado';
     body.innerHTML = `
-      <h3 class="quiz-question">Completaste el test: ${state.quizScore} de ${QUIZ_QUESTIONS.length} correctas (${pct}%)</h3>
-      <p style="color: var(--jv-slate); font-size: 0.94rem;">
-        ${
-          pct >= 75
-            ? '¡Excelente base teórica! En JV Autoescuela terminamos de pulir el examen práctico con vos en Hurlingham.'
-            : 'Repasá las prioridades y velocidades máximas. Con nuestras clases te damos todo el material oficial para aprobar.'
-        }
-      </p>
-      <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;">
-        <button type="button" class="btn btn-primary btn-sm" id="quiz-restart-btn">Volver a intentar</button>
-        <a href="#turnero" class="btn btn-outline btn-sm">Practicar manejo real</a>
+      <h3 class="quiz-question">Puntaje: ${state.quizScore} de ${QUIZ_QUESTIONS.length} correctas</h3>
+      <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px;">
+        <button type="button" class="btn btn-primary btn-sm" id="quiz-restart-btn">Reintentar</button>
+        <a href="#turnero" class="btn btn-outline btn-sm">Reservar Práctica</a>
       </div>
     `;
     document.getElementById('quiz-restart-btn')?.addEventListener('click', () => {
@@ -543,19 +562,11 @@ function renderQuiz() {
   body.innerHTML = `
     <p class="quiz-question">${q.question}</p>
     <div class="quiz-options">
-      ${q.options
-        .map(
-          (opt, idx) => `
-          <button type="button" class="quiz-option" data-opt-idx="${idx}">${opt}</button>
-        `
-        )
-        .join('')}
+      ${q.options.map((opt, idx) => `<button type="button" class="quiz-option" data-opt-idx="${idx}">${opt}</button>`).join('')}
     </div>
     <div class="quiz-feedback" id="quiz-feedback" hidden></div>
-    <div style="margin-top: 16px; display: flex; justify-content: flex-end;">
-      <button type="button" class="btn btn-dark btn-sm" id="quiz-next-btn" hidden>
-        ${state.quizIndex + 1 === QUIZ_QUESTIONS.length ? 'Ver resultado' : 'Siguiente pregunta →'}
-      </button>
+    <div style="margin-top: 14px; display: flex; justify-content: flex-end;">
+      <button type="button" class="btn btn-dark btn-sm" id="quiz-next-btn" hidden>Siguiente →</button>
     </div>
   `;
 
@@ -593,10 +604,40 @@ function renderQuiz() {
 }
 
 /* ==========================================================================
-   INICIALIZACIÓN GENERAL
+   SCROLL REVEAL & HEADER SCROLL SHADOW
    ========================================================================== */
+function setupAnimations() {
+  const header = document.getElementById('site-header');
+  window.addEventListener(
+    'scroll',
+    () => {
+      header?.classList.toggle('is-scrolled', window.scrollY > 16);
+    },
+    { passive: true }
+  );
+
+  const targets = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    targets.forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }
+  );
+
+  targets.forEach((el) => observer.observe(el));
+}
+
 function init() {
-  // Menú móvil
   const menuBtn = document.getElementById('mobile-menu-btn');
   const nav = document.getElementById('main-nav');
   menuBtn?.addEventListener('click', () => {
@@ -610,7 +651,6 @@ function init() {
     });
   });
 
-  // Filtros de cursos
   document.querySelectorAll('.filter-btn').forEach((btn) => {
     btn.addEventListener('click', () => {
       state.activeFilter = btn.getAttribute('data-category') || 'all';
@@ -619,31 +659,10 @@ function init() {
     });
   });
 
-  // Botones desde tarjetas de flota
-  document.querySelectorAll('[data-filter-jump]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const cat = btn.getAttribute('data-filter-jump');
-      state.activeFilter = cat;
-      document.querySelectorAll('.filter-btn').forEach((b) => {
-        b.classList.toggle('is-active', b.getAttribute('data-category') === cat);
-      });
-      renderCourses();
-      document.getElementById('cursos')?.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-
-  document.querySelectorAll('[data-book-category]').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      jumpToBooking(btn.getAttribute('data-book-category'));
-    });
-  });
-
-  // Carrito drawer
   document.getElementById('open-cart-btn')?.addEventListener('click', openCartDrawer);
   document.getElementById('close-cart-btn')?.addEventListener('click', closeCartDrawer);
   document.getElementById('cart-backdrop')?.addEventListener('click', closeCartDrawer);
 
-  // Turnero
   const dateInput = document.getElementById('booking-date');
   if (dateInput) {
     const minDate = getNextValidDateString();
@@ -654,11 +673,14 @@ function init() {
   document.getElementById('booking-category')?.addEventListener('change', loadAvailability);
   document.getElementById('booking-form')?.addEventListener('submit', handleBookingSubmit);
 
+  renderFleetShowcase();
   renderCourses();
   populateBookingCourseSelect();
   renderCart();
   loadAvailability();
+  setupExamTabs();
   renderQuiz();
+  setupAnimations();
   fetchCourses();
 }
 

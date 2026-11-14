@@ -1,11 +1,11 @@
 /**
  * Cloudflare Worker para JV Autoescuela (Hurlingham)
  * - Sirve los archivos estáticos compilados en ./dist mediante env.ASSETS
- * - Expone endpoints /api/* listos para:
- *   1. Catálogo de cursos y packs
+ * - Expone endpoints /api/* preparados para:
+ *   1. Catálogo de cursos (sin precios hardcodeados; listos para definir o conectar a D1)
  *   2. Disponibilidad horaria (preparado para Google Calendar API)
  *   3. Pre-reservas de turnos con link directo a Google Calendar & WhatsApp
- *   4. Pre-checkout de compra online (preparado para Mercado Pago Checkout Pro)
+ *   4. Solicitud de presupuesto / compra online (preparado para Mercado Pago Checkout Pro)
  */
 
 export const COURSES_CATALOG = [
@@ -13,161 +13,97 @@ export const COURSES_CATALOG = [
     id: 'auto-manual-5',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Pack Inicial · 5 Clases en Gol Rojo',
-    badge: 'Ideal si ya tenés noción',
+    title: 'Pack Inicial · 5 Clases',
+    badge: 'Conocimientos previos',
     classesCount: 5,
     durationMin: 60,
-    priceArs: 95000,
-    installments: 3,
     highlight: false,
-    vehicle: 'Volkswagen Gol Rojo Doble Comando',
-    description:
-      '5 clases prácticas individuales de 60 minutos en nuestro VW Gol rojo ploteado. Ideal para afianzar embrague, cambios, rotondas y estacionamiento.',
-    includes: [
-      'Instructor matriculado PBA',
-      'VW Gol rojo con doble comando y VTV al día',
-      'Práctica real en calles y avenidas de Hurlingham'
-    ]
+    vehicle: 'VW Gol Rojo Doble Comando',
+    description: 'Ideal para afianzar embrague, cambios, rotondas y estacionamiento en Hurlingham.'
   },
   {
     id: 'auto-manual-10',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Curso Completo · 10 Clases + Simulación',
+    title: 'Curso Completo · 10 Clases',
     badge: 'Más elegido en Hurlingham',
     classesCount: 10,
     durationMin: 60,
-    priceArs: 175000,
-    installments: 6,
     highlight: true,
-    vehicle: 'Volkswagen Gol Rojo Doble Comando',
-    description:
-      'Nuestro curso estrella para aprender desde cero hasta rendir con total seguridad. Incluye simulacro de examen práctico y maniobras de estacionamiento.',
-    includes: [
-      'Aprendizaje progresivo desde cero',
-      'Estacionamiento paralelo, a 45° y salida en pendiente',
-      'Simulacro real de examen práctico en Hurlingham'
-    ]
+    vehicle: 'VW Gol Rojo Doble Comando',
+    description: 'Aprendizaje desde cero hasta el nivel de examen práctico, con maniobras reales.'
   },
   {
     id: 'auto-manual-15',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Pack Intensivo · 15 Clases Desde Cero',
+    title: 'Pack Intensivo · 15 Clases',
     badge: 'Cero miedo al volante',
     classesCount: 15,
     durationMin: 60,
-    priceArs: 249000,
-    installments: 6,
     highlight: false,
-    vehicle: 'Volkswagen Gol Rojo Doble Comando',
-    description:
-      'Pensado para quienes nunca manejaron o sienten nervios al tránsito. Acompañamiento paciente paso a paso hasta salir a avenidas y Acceso Oeste.',
-    includes: [
-      'Abordaje paciente para principiantes o amaxofobia',
-      'Práctica urbana + avenidas de alto flujo (Av. Vergara)',
-      'Seguimiento personalizado hasta tu licencia'
-    ]
+    vehicle: 'VW Gol Rojo Doble Comando',
+    description: 'Acompañamiento paciente paso a paso para principiantes absolutos o amaxofobia.'
   },
   {
     id: 'auto-automatico-8',
     category: 'automatico',
     categoryLabel: 'Auto Caja Automática',
     title: 'Curso Caja Automática · 8 Clases',
-    badge: 'Sin embrague ni tironeos',
+    badge: 'Sin embrague',
     classesCount: 8,
     durationMin: 60,
-    priceArs: 165000,
-    installments: 6,
     highlight: false,
     vehicle: 'Unidad Automática Doble Comando',
-    description:
-      'Aprendé en vehículo automático moderno con doble comando. Enfocado en control de trayectoria, frenado suave, espejos y tránsito urbano.',
-    includes: [
-      'Unidad automática habilitada y asegurada',
-      'Ideal para quienes manejan o rinden con caja AT',
-      'Estacionamiento y conducción defensiva'
-    ]
+    description: 'Conducción fluida y segura en unidad moderna con caja automática y doble comando.'
   },
   {
     id: 'moto-cilindrada',
     category: 'moto',
     categoryLabel: 'Motos · Todas las Cilindradas',
-    title: 'Curso Moto · 6 Clases por Cilindrada',
+    title: 'Curso Moto por Cilindrada',
     badge: 'Cat. A1.1 a A1.4 / A2',
     classesCount: 6,
     durationMin: 60,
-    priceArs: 115000,
-    installments: 3,
     highlight: false,
     vehicle: 'Motos 110cc / 150cc / +250cc',
-    description:
-      'Entrenamiento específico según la cilindrada de tu licencia. Slalom entre conos, equilibrio a baja velocidad, contramanillar y frenado de emergencia.',
-    includes: [
-      'Práctica para todas las cilindradas (110cc a +300cc)',
-      'Circuito de conos idéntico al examen municipal',
-      'Técnicas de frenado y postura segura'
-    ]
+    description: 'Circuito de conos, equilibrio a baja velocidad, frenado y práctica según cilindrada.'
   },
   {
     id: 'gran-porte-pro',
     category: 'gran-porte',
     categoryLabel: 'Camiones y Colectivos',
-    title: 'Capacitación Gran Porte · Camiones y Colectivos',
-    badge: 'Licencias Profesionales C / D / E',
+    title: 'Capacitación Gran Porte',
+    badge: 'Licencias C / D / E',
     classesCount: 5,
     durationMin: 60,
-    priceArs: 210000,
-    installments: 6,
     highlight: false,
     vehicle: 'Camión / Colectivo (Gran Porte)',
-    description:
-      'Preparación especializada para conductores profesionales de carga y pasajeros. Puntos ciegos, radios de giro amplios, retroceso con espejos y maniobras.',
-    includes: [
-      'Categorías profesionales C1, C2, C3, D1–D3 y E1',
-      'Maniobras de precisión, acoplado y retroceso',
-      'Preparación integral para examen profesional'
-    ]
+    description: 'Radios de giro, espejos, retroceso y conducción profesional de carga o pasajeros.'
   },
   {
     id: 'extra-estacionamiento',
     category: 'extras',
     categoryLabel: 'Clases a Medida',
-    title: 'Módulo Estacionamiento & Autopista (2 Clases)',
-    badge: 'Perfeccionamiento puntual',
+    title: 'Estacionamiento & Autopista',
+    badge: 'Perfeccionamiento',
     classesCount: 2,
     durationMin: 60,
-    priceArs: 42000,
-    installments: 3,
     highlight: false,
     vehicle: 'VW Gol Rojo o Automático',
-    description:
-      '¿Ya sabés circular pero te cuesta estacionar entre dos autos o subir a autopista? En 2 clases intensivas dominás las referencias exactas.',
-    includes: [
-      'Referencias visuales infalibles para estacionar',
-      'Incorporación a autopista y sobrepaso seguro',
-      'Corrección de vicios de manejo'
-    ]
+    description: 'Referencias visuales precisas para estacionar entre autos y circular en autopista.'
   },
   {
     id: 'extra-examen-alquiler',
     category: 'extras',
     categoryLabel: 'Examen Práctico',
-    title: 'Auto Habilitado para Rendir Examen',
-    badge: 'En Hurlingham',
+    title: 'Auto Habilitado para Examen',
+    badge: 'Pista Hurlingham',
     classesCount: 1,
     durationMin: 90,
-    priceArs: 55000,
-    installments: 1,
     highlight: false,
-    vehicle: 'Unidad JV Habilitada + Acompañamiento',
-    description:
-      'Vamos con vos a la pista de examen municipal con nuestro vehículo habilitado, VTV, seguro de enseñanza vigente y clase previa de precalentamiento.',
-    includes: [
-      '30 min de repaso previo antes de ingresar a pista',
-      'Vehículo con toda la documentación oficial al día',
-      'Acompañamiento de instructor matriculado'
-    ]
+    vehicle: 'Unidad JV Habilitada + Repaso',
+    description: 'Unidad habilitada con VTV y seguro de enseñanza al día + repaso previo al examen.'
   }
 ];
 
@@ -182,11 +118,10 @@ function jsonResponse(data, status = 200) {
 }
 
 function getDayOfWeekArgentina(dateStr) {
-  // dateStr format: YYYY-MM-DD
   const [y, m, d] = dateStr.split('-').map(Number);
   if (!y || !m || !d) return null;
   const dt = new Date(Date.UTC(y, m - 1, d, 12, 0, 0));
-  return dt.getUTCDay(); // 0 = Domingo, 6 = Sábado
+  return dt.getUTCDay();
 }
 
 function buildSlotsForDate(dateStr) {
@@ -195,28 +130,22 @@ function buildSlotsForDate(dateStr) {
   if (day === 0) {
     return {
       closed: true,
-      reason: 'Los domingos la autoescuela permanece cerrada. Atendemos de Lunes a Sábados.',
+      reason: 'Los domingos permanecemos cerrados. Atendemos de Lunes a Sábados.',
       slots: []
     };
   }
 
-  // Lunes a Viernes: 08:00 a 18:00 (último turno 17:00)
-  // Sábados: 09:00 a 13:00 (último turno 12:00)
   const hours =
     day === 6
       ? ['09:00', '10:00', '11:00', '12:00']
       : ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
 
-  // Simulación determinística de ocupación hasta conectar Google Calendar API real
   const seed = dateStr.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
-  const slots = hours.map((time, idx) => {
-    const busy = (seed + idx * 3) % 7 === 0;
-    return {
-      time,
-      available: !busy,
-      instructor: idx % 2 === 0 ? 'Instructor Titular (VW Gol Rojo / Flota)' : 'Equipo JV Hurlingham'
-    };
-  });
+  const slots = hours.map((time, idx) => ({
+    time,
+    available: (seed + idx * 3) % 7 !== 0,
+    instructor: 'Equipo JV Hurlingham'
+  }));
 
   return {
     closed: false,
@@ -278,7 +207,6 @@ export default {
       if (pathname === '/api/courses' && request.method === 'GET') {
         return jsonResponse({
           ok: true,
-          currency: 'ARS',
           courses: COURSES_CATALOG
         });
       }
@@ -290,9 +218,6 @@ export default {
           return jsonResponse({ ok: false, error: 'Parámetro date requerido (YYYY-MM-DD).' }, 400);
         }
 
-        // Nota de arquitectura futura:
-        // Si env.GOOGLE_CALENDAR_ID y env.GOOGLE_PRIVATE_KEY están configurados,
-        // aquí se consultará Google Calendar FreeBusy API antes de devolver los slots.
         const availability = buildSlotsForDate(date);
         return jsonResponse({
           ok: true,
@@ -339,8 +264,8 @@ export default {
             `WhatsApp: ${phone}`,
             `Zona: ${neighborhood || 'Hurlingham'}`,
             course ? `Curso: ${course.title}` : `Modalidad: ${vehicleLabel}`,
-            `Experiencia: ${experience || 'No especificada'}`,
-            notes ? `Observaciones: ${notes}` : ''
+            `Nivel: ${experience || 'No especificado'}`,
+            notes ? `Notas: ${notes}` : ''
           ]
             .filter(Boolean)
             .join('\n');
@@ -355,13 +280,13 @@ export default {
           });
 
           const waMessage = [
-            `Hola JV Autoescuela! Quiero confirmar mi pre-reserva de turno:`,
+            `Hola JV Autoescuela Hurlingham! Quiero confirmar mi pre-reserva de turno:`,
             `• Código: ${bookingCode}`,
             `• Nombre: ${name}`,
             `• Zona: ${neighborhood || 'Hurlingham'}`,
-            `• Vehículo / Categoría: ${vehicleLabel}`,
-            course ? `• Pack / Curso: ${course.title}` : null,
-            `• Fecha y hora solicitada: ${date} a las ${time} hs`,
+            `• Vehículo: ${vehicleLabel}`,
+            course ? `• Curso elegido: ${course.title}` : null,
+            `• Fecha y hora: ${date} a las ${time} hs`,
             `• Nivel: ${experience || 'A definir'}`,
             notes ? `• Nota: ${notes}` : null
           ]
@@ -397,23 +322,19 @@ export default {
           const { items = [], paymentMethod = 'transferencia', customer = {} } = body;
 
           if (!Array.isArray(items) || items.length === 0) {
-            return jsonResponse({ ok: false, error: 'Tu carrito está vacío.' }, 400);
+            return jsonResponse({ ok: false, error: 'Tu selección está vacía.' }, 400);
           }
 
-          let subtotal = 0;
           const resolvedItems = [];
-
           for (const item of items) {
             const catalogItem = COURSES_CATALOG.find((c) => c.id === item.id);
             if (!catalogItem) continue;
             const qty = Math.max(1, Math.min(10, Number(item.qty) || 1));
-            subtotal += catalogItem.priceArs * qty;
             resolvedItems.push({
               id: catalogItem.id,
               title: catalogItem.title,
-              qty,
-              unitPrice: catalogItem.priceArs,
-              lineTotal: catalogItem.priceArs * qty
+              vehicle: catalogItem.vehicle,
+              qty
             });
           }
 
@@ -421,25 +342,17 @@ export default {
             return jsonResponse({ ok: false, error: 'No se encontraron cursos válidos.' }, 400);
           }
 
-          const discountRate = paymentMethod === 'transferencia' ? 0.1 : 0;
-          const discountAmount = Math.round(subtotal * discountRate);
-          const total = subtotal - discountAmount;
-          const orderCode = `ORD-${Date.now().toString().slice(-6)}`;
+          const orderCode = `SOL-${Date.now().toString().slice(-6)}`;
           const waNumber = env.SCHOOL_WHATSAPP || '5491168172577';
-
-          const summaryLines = resolvedItems.map(
-            (it) => `- ${it.qty}x ${it.title} ($${it.lineTotal.toLocaleString('es-AR')})`
-          );
+          const summaryLines = resolvedItems.map((it) => `- ${it.qty}x ${it.title} (${it.vehicle})`);
           const waText = [
-            `Hola JV Autoescuela! Armé mi pedido online (${orderCode}):`,
+            `Hola JV Autoescuela Hurlingham! Quiero consultar el valor y disponibilidad (${orderCode}):`,
             ...summaryLines,
-            `Medio de pago elegido: ${
-              paymentMethod === 'transferencia' ? 'Transferencia / Efectivo (10% OFF)' : 'Cuotas con Tarjeta / Mercado Pago'
+            `Forma de pago preferida: ${
+              paymentMethod === 'transferencia' ? 'Transferencia / Efectivo' : 'Cuotas / Tarjeta'
             }`,
-            `Total estimado: $${total.toLocaleString('es-AR')}`,
-            customer.name ? `Alumno: ${customer.name}` : null,
-            customer.phone ? `Tel: ${customer.phone}` : null,
-            `Quiero coordinar el pago y mi primer turno!`
+            customer.name ? `Nombre: ${customer.name}` : null,
+            '¿Me pasan el valor actualizado y opciones de horario?'
           ]
             .filter(Boolean)
             .join('\n');
@@ -448,24 +361,20 @@ export default {
             ok: true,
             order: {
               code: orderCode,
-              mode: env.MP_ACCESS_TOKEN ? 'mercadopago-live' : 'whatsapp-reservation',
+              mode: env.MP_ACCESS_TOKEN ? 'mercadopago-live' : 'quote-whatsapp',
               items: resolvedItems,
-              subtotal,
-              discountAmount,
-              total,
               paymentMethod,
               whatsappUrl: `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`
             }
           });
         } catch {
-          return jsonResponse({ ok: false, error: 'Error procesando el pedido.' }, 400);
+          return jsonResponse({ ok: false, error: 'Error procesando la solicitud.' }, 400);
         }
       }
 
       return jsonResponse({ ok: false, error: 'Endpoint no encontrado.' }, 404);
     }
 
-    // Sirve la SPA estática desde ./dist mediante Workers Static Assets
     return env.ASSETS.fetch(request);
   }
 };

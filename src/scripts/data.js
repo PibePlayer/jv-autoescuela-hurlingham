@@ -1,241 +1,220 @@
+export const FLEET_CATEGORIES = [
+  {
+    id: 'manual',
+    tabLabel: 'Auto Manual · Gol Rojo',
+    license: 'Categoría B1 · Caja Manual',
+    title: 'Auto Caja Manual en nuestro VW Gol Rojo',
+    image: '/images/gol-rojo-jv.jpg',
+    imageAlt: 'Volkswagen Gol rojo ploteado JV Autoescuela Hurlingham',
+    summary:
+      'Nuestro clásico VW Gol rojo ploteado con doble comando certificado. Aprendés embrague, cambios, arranque en pendiente y estacionamiento real por las calles y avenidas de Hurlingham.',
+    bullets: [
+      'Doble comando, VTV y seguro de enseñanza al día',
+      'Práctica real en Av. Vergara, Villa Tesei, Morris y Hurlingham Centro',
+      'Opción de unidad habilitada para el día del examen práctico'
+    ]
+  },
+  {
+    id: 'automatico',
+    tabLabel: 'Auto Caja Automática',
+    license: 'Categoría B1 · Caja Automática',
+    title: 'Auto Caja Automática · Conducción Fluida',
+    image: '/images/auto-automatico-jv.jpg',
+    imageAlt: 'Auto caja automática JV Autoescuela Hurlingham',
+    summary:
+      'Enseñanza en vehículo moderno automático con doble comando. Ideal si tu auto es automático o querés concentrarte 100% en el tránsito, espejos y estacionamiento sin estrés.',
+    bullets: [
+      'Unidad automática habilitada con mantenimiento riguroso',
+      'Ideal para superar miedos al tránsito y ganar confianza rápida',
+      'Estacionamiento paralelo, a 45° y salida a autopista'
+    ]
+  },
+  {
+    id: 'moto',
+    tabLabel: 'Motos · Todas CC',
+    license: 'Categorías A1.1 a A1.4 / A2',
+    title: 'Motos en Todas las Cilindradas',
+    image: '/images/motos-jv.jpg',
+    imageAlt: 'Entrenamiento en moto con conos JV Autoescuela',
+    summary:
+      'Entrenamiento específico según la cilindrada de tu licencia: desde 110cc y 150cc hasta motos medianas y de alta cilindrada (+300cc).',
+    bullets: [
+      'Circuito de conos (slalom), equilibrio a baja velocidad y ocho',
+      'Frenado de emergencia progresivo, postura y mirada',
+      'Preparación exacta para la pista práctica oficial'
+    ]
+  },
+  {
+    id: 'gran-porte',
+    tabLabel: 'Camiones y Colectivos',
+    license: 'Profesional C1–C3 · D1–D3 · E1',
+    title: 'Vehículos de Gran Porte · Camiones y Colectivos',
+    image: '/images/gran-porte-jv.jpg',
+    imageAlt: 'Camión y colectivo de gran porte JV Autoescuela',
+    summary:
+      'Capacitación técnica para licencias profesionales de transporte de cargas y pasajeros. Dominá maniobras de precisión con seguridad.',
+    bullets: [
+      'Radios de giro amplios, gálibo y control de puntos ciegos',
+      'Retroceso guiado con espejos gran angular y acoplado',
+      'Preparación enfocada en examen profesional y salida laboral'
+    ]
+  }
+];
+
 export const FALLBACK_COURSES = [
   {
     id: 'auto-manual-5',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Pack Inicial · 5 Clases en Gol Rojo',
-    badge: 'Ideal si ya tenés noción',
+    title: 'Pack Inicial · 5 Clases',
+    badge: 'Conocimientos previos',
     classesCount: 5,
     durationMin: 60,
-    priceArs: 95000,
-    installments: 3,
     highlight: false,
-    vehicle: 'Volkswagen Gol Rojo Doble Comando',
-    description:
-      '5 clases prácticas individuales de 60 minutos en nuestro VW Gol rojo ploteado. Ideal para afianzar embrague, cambios, rotondas y estacionamiento.',
-    includes: [
-      'Instructor matriculado PBA',
-      'VW Gol rojo con doble comando y VTV al día',
-      'Práctica real en calles y avenidas de Hurlingham'
-    ]
+    vehicle: 'VW Gol Rojo Doble Comando',
+    description: 'Ideal para afianzar embrague, cambios, rotondas y estacionamiento en Hurlingham.'
   },
   {
     id: 'auto-manual-10',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Curso Completo · 10 Clases + Simulación',
+    title: 'Curso Completo · 10 Clases',
     badge: 'Más elegido en Hurlingham',
     classesCount: 10,
     durationMin: 60,
-    priceArs: 175000,
-    installments: 6,
     highlight: true,
-    vehicle: 'Volkswagen Gol Rojo Doble Comando',
-    description:
-      'Nuestro curso estrella para aprender desde cero hasta rendir con total seguridad. Incluye simulacro de examen práctico y maniobras de estacionamiento.',
-    includes: [
-      'Aprendizaje progresivo desde cero',
-      'Estacionamiento paralelo, a 45° y salida en pendiente',
-      'Simulacro real de examen práctico en Hurlingham'
-    ]
+    vehicle: 'VW Gol Rojo Doble Comando',
+    description: 'Aprendizaje desde cero hasta el nivel de examen práctico, con maniobras reales.'
   },
   {
     id: 'auto-manual-15',
     category: 'manual',
     categoryLabel: 'Auto Manual · VW Gol Rojo',
-    title: 'Pack Intensivo · 15 Clases Desde Cero',
+    title: 'Pack Intensivo · 15 Clases',
     badge: 'Cero miedo al volante',
     classesCount: 15,
     durationMin: 60,
-    priceArs: 249000,
-    installments: 6,
     highlight: false,
-    vehicle: 'Volkswagen Gol Rojo Doble Comando',
-    description:
-      'Pensado para quienes nunca manejaron o sienten nervios al tránsito. Acompañamiento paciente paso a paso hasta salir a avenidas y Acceso Oeste.',
-    includes: [
-      'Abordaje paciente para principiantes o amaxofobia',
-      'Práctica urbana + avenidas de alto flujo (Av. Vergara)',
-      'Seguimiento personalizado hasta tu licencia'
-    ]
+    vehicle: 'VW Gol Rojo Doble Comando',
+    description: 'Acompañamiento paciente paso a paso para principiantes absolutos o amaxofobia.'
   },
   {
     id: 'auto-automatico-8',
     category: 'automatico',
     categoryLabel: 'Auto Caja Automática',
     title: 'Curso Caja Automática · 8 Clases',
-    badge: 'Sin embrague ni tironeos',
+    badge: 'Sin embrague',
     classesCount: 8,
     durationMin: 60,
-    priceArs: 165000,
-    installments: 6,
     highlight: false,
     vehicle: 'Unidad Automática Doble Comando',
-    description:
-      'Aprendé en vehículo automático moderno con doble comando. Enfocado en control de trayectoria, frenado suave, espejos y tránsito urbano.',
-    includes: [
-      'Unidad automática habilitada y asegurada',
-      'Ideal para quienes manejan o rinden con caja AT',
-      'Estacionamiento y conducción defensiva'
-    ]
+    description: 'Conducción fluida y segura en unidad moderna con caja automática y doble comando.'
   },
   {
     id: 'moto-cilindrada',
     category: 'moto',
     categoryLabel: 'Motos · Todas las Cilindradas',
-    title: 'Curso Moto · 6 Clases por Cilindrada',
+    title: 'Curso Moto por Cilindrada',
     badge: 'Cat. A1.1 a A1.4 / A2',
     classesCount: 6,
     durationMin: 60,
-    priceArs: 115000,
-    installments: 3,
     highlight: false,
     vehicle: 'Motos 110cc / 150cc / +250cc',
-    description:
-      'Entrenamiento específico según la cilindrada de tu licencia. Slalom entre conos, equilibrio a baja velocidad, contramanillar y frenado de emergencia.',
-    includes: [
-      'Práctica para todas las cilindradas (110cc a +300cc)',
-      'Circuito de conos idéntico al examen municipal',
-      'Técnicas de frenado y postura segura'
-    ]
+    description: 'Circuito de conos, equilibrio a baja velocidad, frenado y práctica según cilindrada.'
   },
   {
     id: 'gran-porte-pro',
     category: 'gran-porte',
     categoryLabel: 'Camiones y Colectivos',
-    title: 'Capacitación Gran Porte · Camiones y Colectivos',
-    badge: 'Licencias Profesionales C / D / E',
+    title: 'Capacitación Gran Porte',
+    badge: 'Licencias C / D / E',
     classesCount: 5,
     durationMin: 60,
-    priceArs: 210000,
-    installments: 6,
     highlight: false,
     vehicle: 'Camión / Colectivo (Gran Porte)',
-    description:
-      'Preparación especializada para conductores profesionales de carga y pasajeros. Puntos ciegos, radios de giro amplios, retroceso con espejos y maniobras.',
-    includes: [
-      'Categorías profesionales C1, C2, C3, D1–D3 y E1',
-      'Maniobras de precisión, acoplado y retroceso',
-      'Preparación integral para examen profesional'
-    ]
+    description: 'Radios de giro, espejos, retroceso y conducción profesional de carga o pasajeros.'
   },
   {
     id: 'extra-estacionamiento',
     category: 'extras',
     categoryLabel: 'Clases a Medida',
-    title: 'Módulo Estacionamiento & Autopista (2 Clases)',
-    badge: 'Perfeccionamiento puntual',
+    title: 'Estacionamiento & Autopista',
+    badge: 'Perfeccionamiento',
     classesCount: 2,
     durationMin: 60,
-    priceArs: 42000,
-    installments: 3,
     highlight: false,
     vehicle: 'VW Gol Rojo o Automático',
-    description:
-      '¿Ya sabés circular pero te cuesta estacionar entre dos autos o subir a autopista? En 2 clases intensivas dominás las referencias exactas.',
-    includes: [
-      'Referencias visuales infalibles para estacionar',
-      'Incorporación a autopista y sobrepaso seguro',
-      'Corrección de vicios de manejo'
-    ]
+    description: 'Referencias visuales precisas para estacionar entre autos y circular en autopista.'
   },
   {
     id: 'extra-examen-alquiler',
     category: 'extras',
     categoryLabel: 'Examen Práctico',
-    title: 'Auto Habilitado para Rendir Examen',
-    badge: 'En Hurlingham',
+    title: 'Auto Habilitado para Examen',
+    badge: 'Pista Hurlingham',
     classesCount: 1,
     durationMin: 90,
-    priceArs: 55000,
-    installments: 1,
     highlight: false,
-    vehicle: 'Unidad JV Habilitada + Acompañamiento',
-    description:
-      'Vamos con vos a la pista de examen municipal con nuestro vehículo habilitado, VTV, seguro de enseñanza vigente y clase previa de precalentamiento.',
-    includes: [
-      '30 min de repaso previo antes de ingresar a pista',
-      'Vehículo con toda la documentación oficial al día',
-      'Acompañamiento de instructor matriculado'
-    ]
+    vehicle: 'Unidad JV Habilitada + Repaso',
+    description: 'Unidad habilitada con VTV y seguro de enseñanza al día + repaso previo al examen.'
   }
 ];
 
 export const QUIZ_QUESTIONS = [
   {
-    question: 'En una esquina sin semáforo ni señalización en Provincia de Buenos Aires, ¿quién tiene prioridad de paso?',
+    question: 'En una esquina sin semáforo en Provincia de Buenos Aires, ¿quién tiene prioridad de paso?',
     options: [
-      'El vehículo de mayor porte o tamaño',
+      'El vehículo de mayor tamaño',
       'El conductor que se aproxima por la derecha',
-      'El que circula más rápido por esa calle'
+      'El que circula más rápido'
     ],
     correctIndex: 1,
-    explanation: 'Según la Ley de Tránsito (Art. 41), todo conductor debe ceder el paso al vehículo que cruza desde su derecha, salvo excepciones señalizadas.'
+    explanation: 'Según la Ley de Tránsito (Art. 41), se debe ceder el paso al vehículo que cruza desde la derecha.'
   },
   {
     question: 'Al aproximarse a una rotonda, ¿qué vehículo tiene la prioridad de paso?',
     options: [
-      'El que intenta ingresar desde la avenida principal',
-      'El que ya se encuentra circulando dentro de la rotonda',
+      'El que intenta ingresar desde la avenida',
+      'El que ya circula dentro de la rotonda',
       'El que ingresa por la derecha'
     ],
     correctIndex: 1,
-    explanation: 'En las rotondas tiene prioridad absoluta quien circula por ella sobre el que intenta ingresar, y debe cederse el paso al que egresa.'
+    explanation: 'En rotondas tiene prioridad absoluta quien ya circula dentro sobre el que intenta ingresar.'
   },
   {
-    question: '¿Cuál es la velocidad máxima permitida en avenidas urbanas (salvo señalización en contrario)?',
+    question: '¿Cuál es la velocidad máxima permitida en avenidas urbanas (salvo señalización)?',
     options: ['40 km/h', '60 km/h', '80 km/h'],
     correctIndex: 1,
-    explanation: 'En zona urbana la máxima general es 40 km/h en calles y 60 km/h en avenidas (20 km/h en encrucijadas sin semáforo).'
+    explanation: 'En zona urbana la máxima general es 40 km/h en calles y 60 km/h en avenidas.'
   },
   {
-    question: 'En Provincia de Buenos Aires, respecto al alcohol al volante para conducir cualquier vehículo rige:',
+    question: 'En Provincia de Buenos Aires, respecto al alcohol al volante rige:',
     options: [
-      'Tolerancia hasta 0,5 g/l para particulares',
+      'Tolerancia hasta 0,5 g/l',
       'Alcohol Cero (0,0 g/l) para todas las categorías',
-      'Tolerancia de 0,2 g/l únicamente para motos'
+      'Tolerancia de 0,2 g/l solo para autos'
     ],
     correctIndex: 1,
-    explanation: 'La Ley de Alcohol Cero en la Provincia de Buenos Aires establece tolerancia 0,0 g/l para todo conductor.'
+    explanation: 'La Ley de Alcohol Cero en PBA establece tolerancia 0,0 g/l para todo conductor.'
   },
   {
-    question: '¿Qué documentación es obligatoria llevar al circular en auto?',
+    question: 'Cuando un peatón cruza por la senda peatonal sin semáforo, ¿cómo debés proceder?',
     options: [
-      'DNI, Licencia habilitante, Cédula del vehículo, Seguro vigente y VTV al día',
-      'Solo DNI y comprobante del seguro',
-      'Únicamente la licencia de conducir'
-    ],
-    correctIndex: 0,
-    explanation: 'Debés circular con licencia vigente acorde a la categoría, DNI, cédula identificatoria, póliza de seguro obligatorio y VTV aprobada.'
-  },
-  {
-    question: 'Cuando un peatón está cruzando por la senda peatonal sin semáforo, ¿cómo debés proceder?',
-    options: [
-      'Tocar bocina para advertirle y pasar rápido',
+      'Tocar bocina y pasar rápido',
       'Detener la marcha y cederle el paso siempre',
-      'Avanzar si hay espacio detrás suyo'
+      'Avanzar si hay lugar detrás'
     ],
     correctIndex: 1,
     explanation: 'El peatón tiene prioridad absoluta en la senda peatonal y en esquinas sin semáforo.'
   },
   {
-    question: 'Para motos en la vía pública, ¿cuál de estas normas es obligatoria?',
+    question: 'En camiones o colectivos (gran porte), ¿por qué se abre el ángulo antes de girar a la derecha?',
     options: [
-      'Casco homologado y abrochado para conductor y acompañante, y luces encendidas',
-      'Casco solo obligatorio en autopistas',
-      'Circular por la banquina cuando hay congestión'
-    ],
-    correctIndex: 0,
-    explanation: 'El uso de casco protector bien abrochado para conductor y acompañante y luz baja encendida son obligatorios en todo momento.'
-  },
-  {
-    question: 'En camiones o colectivos (gran porte), ¿por qué se debe abrir el ángulo antes de girar a la derecha?',
-    options: [
-      'Para ir más rápido en la esquina',
-      'Por el radio de giro y para evitar que el eje trasero o lateral invada la vereda',
-      'No es necesario abrir el giro en vehículos largos'
+      'Para girar a mayor velocidad',
+      'Por el radio de giro y para evitar que el eje trasero invada la vereda',
+      'No hace falta abrir el giro'
     ],
     correctIndex: 1,
-    explanation: 'Los vehículos de gran porte describen un radio de giro cerrado con su eje trasero; por eso requieren apertura controlada y chequeo constante de espejos.'
+    explanation: 'El eje trasero describe un radio más cerrado, por lo que requiere apertura controlada y chequeo de espejos.'
   }
 ];

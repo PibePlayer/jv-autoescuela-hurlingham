@@ -6,7 +6,7 @@
     <title>JV Autoescuela Hurlingham | Clases de Manejo · Auto Manual, Automático, Motos y Gran Porte</title>
     <meta
       name="description"
-      content="JV Autoescuela N° 1 en Hurlingham (4.8★, +256 reseñas). Aprendé a manejar en nuestro VW Gol rojo con doble comando, caja automática, motos en todas las cilindradas, camiones y colectivos. Instructores matriculados PBA."
+      content="JV Autoescuela N° 1 en Hurlingham (4.8★, +256 reseñas). Aprendé a manejar en nuestro VW Gol rojo con doble comando, caja automática, motos en todas las cilindradas, camiones y colectivos."
     />
     <link rel="icon" type="image/svg+xml" href="/images/logo-jv.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/src/styles/index.css" />
   </head>
   <body>
-    <!-- BARRA SUPERIOR INSTITUCIONAL -->
+    <!-- BARRA SUPERIOR -->
     <div class="topbar">
       <div class="container topbar-inner">
         <div class="topbar-items">
@@ -43,48 +43,35 @@
             Matriculada PBA · DISPO-2024-5
           </span>
         </div>
-        <div class="topbar-rating" aria-label="Calificación 4.8 de 5 estrellas en Google">
+        <div class="topbar-rating">
           <span class="topbar-stars">★★★★★</span>
           <span>4.8 en Google (+256 reseñas en Hurlingham)</span>
         </div>
       </div>
     </div>
 
-    <!-- HEADER PRINCIPAL -->
-    <header class="site-header">
+    <!-- HEADER -->
+    <header class="site-header" id="site-header">
       <div class="container header-inner">
         <a href="#inicio" class="brand" aria-label="JV Autoescuela Hurlingham">
-          <img
-            src="/images/logo-jv.svg"
-            alt="Logo JV Autoescuela Hurlingham"
-            width="210"
-            height="52"
-            style="height: 48px; width: auto;"
-          />
+          <img src="/images/logo-jv.svg" alt="Logo JV Autoescuela Hurlingham" width="210" height="52" style="height: 46px; width: auto;" />
         </a>
 
         <nav class="nav-links" id="main-nav" aria-label="Navegación principal">
+          <a href="#categorias">Vehículos</a>
+          <a href="#cursos">Cursos</a>
           <a href="#calidad">Por qué JV</a>
-          <a href="#categorias">Categorías</a>
-          <a href="#cursos">Cursos Online</a>
           <a href="#turnero">Reservar Turno</a>
-          <a href="#examen">Examen Hurlingham</a>
+          <a href="#examen">Examen PBA</a>
           <a href="#ubicacion">Ubicación</a>
         </nav>
 
         <div class="header-actions">
-          <button type="button" class="cart-trigger" id="open-cart-btn" aria-label="Abrir carrito de compra online">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="9" cy="21" r="1" />
-              <circle cx="20" cy="21" r="1" />
-              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-            </svg>
-            <span>Carrito</span>
+          <button type="button" class="cart-trigger" id="open-cart-btn" aria-label="Ver cursos seleccionados para cotizar">
+            <span>Cotizador</span>
             <span class="cart-count" id="cart-count">0</span>
           </button>
-
           <a href="#turnero" class="btn btn-primary btn-sm header-cta-desktop">Sacar Turno</a>
-
           <button type="button" class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
               <line x1="3" y1="6" x2="21" y2="6" />
@@ -97,22 +84,22 @@
     </header>
 
     <main id="inicio">
-      <!-- HERO PRINCIPAL -->
+      <!-- HERO DESPEJADO -->
       <section class="hero">
         <div class="container hero-grid">
-          <div>
-            <span class="hero-eyebrow">Escuela de Conductores Matriculada · Hurlingham, GBA Oeste</span>
+          <div class="hero-animate-1">
+            <span class="hero-eyebrow">Autoescuela N° 1 de Hurlingham · Habilitada PBA</span>
             <h1>Aprendé a manejar de verdad en Hurlingham</h1>
             <p class="hero-lead">
-              Enseñanza real, paciente y segura en nuestro icónico <strong>VW Gol rojo con doble comando</strong>,
+              Clases individuales con instructores matriculados en nuestro <strong>VW Gol rojo con doble comando</strong>,
               unidades con <strong>caja automática</strong>, <strong>motos de todas las cilindradas</strong> y
-              <strong>camiones y colectivos de gran porte</strong>. No improvises con tu licencia: formáte con los N° 1.
+              <strong>camiones y colectivos</strong>.
             </p>
             <div class="hero-ctas">
-              <a href="#cursos" class="btn btn-primary">Ver Cursos y Packs Online</a>
+              <a href="#cursos" class="btn btn-primary">Elegir Curso</a>
               <a href="#turnero" class="btn btn-outline-light">Reservar Turno</a>
               <a
-                href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela!%20Quiero%20consultar%20por%20clases%20de%20manejo%20en%20Hurlingham."
+                href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela%20Hurlingham!%20Quiero%20consultar%20por%20clases%20de%20manejo."
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn btn-whatsapp"
@@ -124,289 +111,128 @@
             <div class="hero-trust-strip">
               <div class="trust-metric">
                 <strong>4.8 ★ Google</strong>
-                <span>+256 alumnos verificados</span>
+                <span>+256 alumnos en Hurlingham</span>
               </div>
               <div class="trust-metric">
                 <strong>Doble Comando</strong>
                 <span>VTV y seguro de enseñanza al día</span>
               </div>
               <div class="trust-metric">
-                <strong>Todas las Licencias</strong>
-                <span>Auto, Moto y Gran Porte</span>
+                <strong>Desde el 2000</strong>
+                <span>Formación vial real, sin improvisar</span>
               </div>
             </div>
           </div>
 
-          <div class="hero-visual">
+          <div class="hero-animate-2">
             <div class="hero-photo-frame">
               <img
                 src="/images/gol-rojo-jv.jpg"
-                alt="Volkswagen Gol rojo ploteado de JV Autoescuela en Hurlingham con doble comando"
+                alt="Volkswagen Gol rojo ploteado de JV Autoescuela Hurlingham con doble comando"
                 width="960"
                 height="600"
               />
               <div class="hero-caption-bar">
-                <span><strong>Nuestra insignia en Hurlingham:</strong> VW Gol Rojo Doble Comando</span>
-                <span>Av. Vergara 3855 · Clases individuales 60 min</span>
+                <span><strong>Insignia JV en Hurlingham:</strong> VW Gol Rojo Doble Comando</span>
+                <span>Av. Vergara 3855 · Clases de 60 min</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- DIFERENCIACIÓN: CALIDAD REAL VS OPCIONES GRATUITAS / IMPROVISADAS -->
-      <section class="section section-surface" id="calidad">
-        <div class="container">
-          <div class="section-header">
-            <span class="section-kicker">Tu seguridad vial no se negocia</span>
-            <h2 class="section-title">¿Por qué JV Autoescuela es la N° 1 de Hurlingham?</h2>
-            <p class="section-subtitle">
-              Aprender a manejar bien te protege a vos y a tu familia todos los días. Compará una formación profesional
-              matriculada frente a las alternativas gratuitas o improvisadas.
-            </p>
-          </div>
-
-          <div class="diff-banner">
-            <article class="diff-card diff-card-jv">
-              <h3>
-                <span>JV Autoescuela Hurlingham</span>
-                <span class="badge-tag badge-red">Matriculada PBA</span>
-              </h3>
-              <ul class="check-list">
-                <li>
-                  <span class="check-icon check-icon-yes" aria-hidden="true">✓</span>
-                  <div>
-                    <strong>Instructores matriculados y pacientes:</strong> Habilitación oficial vigente
-                    (Ley 13.927) y metodología pensada incluso para quienes arrancan con miedo o desde cero.
-                  </div>
-                </li>
-                <li>
-                  <span class="check-icon check-icon-yes" aria-hidden="true">✓</span>
-                  <div>
-                    <strong>Flota impecable con doble comando certificado:</strong> Nuestro VW Gol rojo ploteado,
-                    autos automáticos, motos y gran porte con VTV vigente, frenos revisados y seguro específico de enseñanza.
-                  </div>
-                </li>
-                <li>
-                  <span class="check-icon check-icon-yes" aria-hidden="true">✓</span>
-                  <div>
-                    <strong>60 minutos reales al volante sin esperar meses:</strong> Clases 100% individuales en calle,
-                    avenidas, rotondas y práctica real de estacionamiento en Hurlingham.
-                  </div>
-                </li>
-                <li>
-                  <span class="check-icon check-icon-yes" aria-hidden="true">✓</span>
-                  <div>
-                    <strong>Facilidades de pago y cuotas:</strong> Packs accesibles, descuento por transferencia y
-                    acompañamiento completo hasta el día de tu examen práctico.
-                  </div>
-                </li>
-              </ul>
-            </article>
-
-            <article class="diff-card diff-card-alert">
-              <h3>
-                <span>Clases gratuitas o informales</span>
-                <span class="badge-tag badge-neutral">Riesgo en la calle</span>
-              </h3>
-              <ul class="check-list">
-                <li>
-                  <span class="check-icon check-icon-no" aria-hidden="true">✕</span>
-                  <div>
-                    <strong>Práctica insuficiente para salir al tránsito real:</strong> Pocas clases o circuitos cerrados
-                    que no preparan para esquinas complejas, rotondas ni autopistas.
-                  </div>
-                </li>
-                <li>
-                  <span class="check-icon check-icon-no" aria-hidden="true">✕</span>
-                  <div>
-                    <strong>Vehículos desgastados o sin doble comando real:</strong> Unidades recicladas con alto uso,
-                    sin confort ni garantía mecánica para maniobras de aprendizaje.
-                  </div>
-                </li>
-                <li>
-                  <span class="check-icon check-icon-no" aria-hidden="true">✕</span>
-                  <div>
-                    <strong>Cupos rígidos y largas demoras:</strong> Turnos difíciles de coordinar y sin seguimiento
-                    individualizado para superar inseguridades al volante.
-                  </div>
-                </li>
-                <li>
-                  <span class="check-icon check-icon-no" aria-hidden="true">✕</span>
-                  <div>
-                    <strong>El verdadero costo aparece después:</strong> Sacar una licencia sin estar preparado
-                    multiplica el riesgo de choques, multas y estrés apenas salís a Av. Vergara.
-                  </div>
-                </li>
-              </ul>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- CATEGORÍAS DE ENSEÑANZA -->
+      <!-- SHOWCASE INTERACTIVO DE CATEGORÍAS -->
       <section class="section" id="categorias">
         <div class="container">
-          <div class="section-header">
-            <span class="section-kicker">Flota y Capacitación Integral</span>
+          <div class="section-header reveal">
+            <span class="section-kicker">Flota Habilitada</span>
             <h2 class="section-title">Todas las categorías en un solo lugar</h2>
             <p class="section-subtitle">
-              Desde tu primer auto manual o automático hasta motos de cualquier cilindrada y vehículos pesados de trabajo.
+              Seleccioná el tipo de vehículo con el que querés aprender o ampliar tu licencia.
             </p>
           </div>
 
-          <div class="fleet-grid">
-            <article class="fleet-card">
-              <div class="fleet-media">
-                <img
-                  src="/images/gol-rojo-jv.jpg"
-                  alt="Auto manual VW Gol rojo ploteado JV Autoescuela"
-                  loading="lazy"
-                />
-                <span class="fleet-license-tag">Categoría B1 · Caja Manual</span>
-              </div>
-              <div class="fleet-body">
-                <h3>Auto Caja Manual (VW Gol Rojo)</h3>
-                <p>
-                  El clásico de Hurlingham. Aprendé el dominio fino del embrague, caja de 5 velocidades, arranque en
-                  pendiente y estacionamiento con total seguridad gracias al doble comando.
-                </p>
-                <ul class="fleet-specs">
-                  <li>Ideal principiantes, perfeccionamiento y miedo al volante</li>
-                  <li>Práctica en Av. Vergara, Villa Tesei, Morris y Hurlingham Centro</li>
-                  <li>Disponible vehículo habilitado para el día del examen</li>
-                </ul>
-                <div class="fleet-actions">
-                  <button type="button" class="btn btn-primary btn-sm" data-filter-jump="manual">Ver packs Manual</button>
-                  <button type="button" class="btn btn-outline btn-sm" data-book-category="manual">Reservar en Gol Rojo</button>
-                </div>
-              </div>
-            </article>
-
-            <article class="fleet-card">
-              <div class="fleet-media">
-                <img
-                  src="/images/auto-automatico-jv.jpg"
-                  alt="Auto con caja automática JV Autoescuela"
-                  loading="lazy"
-                />
-                <span class="fleet-license-tag">Categoría B1 · Caja Automática</span>
-              </div>
-              <div class="fleet-body">
-                <h3>Auto Caja Automática</h3>
-                <p>
-                  Conducción fluida y sin estrés desde la primera clase. Enfocate 100% en las distancias de frenado,
-                  espejos, giros y lectura del tránsito urbano.
-                </p>
-                <ul class="fleet-specs">
-                  <li>Unidad automática moderna con doble comando y VTV vigente</li>
-                  <li>Perfecto si manejás vehículo automático familiar o laboral</li>
-                  <li>Práctica de estacionamiento y circulación en autopista</li>
-                </ul>
-                <div class="fleet-actions">
-                  <button type="button" class="btn btn-primary btn-sm" data-filter-jump="automatico">Ver pack Automático</button>
-                  <button type="button" class="btn btn-outline btn-sm" data-book-category="automatico">Reservar Automático</button>
-                </div>
-              </div>
-            </article>
-
-            <article class="fleet-card">
-              <div class="fleet-media">
-                <img
-                  src="/images/motos-jv.jpg"
-                  alt="Entrenamiento en moto con conos para distintas cilindradas"
-                  loading="lazy"
-                />
-                <span class="fleet-license-tag">Categorías A1.1 · A1.2 · A1.3 · A1.4 · A2</span>
-              </div>
-              <div class="fleet-body">
-                <h3>Motos · Todas las Cilindradas</h3>
-                <p>
-                  Desde tu primer scooter o 110cc hasta motos 150cc, 250cc y alta cilindrada (+300cc). Dominá el
-                  equilibrio, slalom de conos y frenado progresivo para aprobar sin bajar el pie.
-                </p>
-                <ul class="fleet-specs">
-                  <li>Preparación adaptada a la cilindrada que necesitás rendir</li>
-                  <li>Circuito con conos idéntico al examen práctico oficial</li>
-                  <li>Técnicas de mirada, contramanillar y manejo defensivo</li>
-                </ul>
-                <div class="fleet-actions">
-                  <button type="button" class="btn btn-primary btn-sm" data-filter-jump="moto">Ver curso Moto</button>
-                  <button type="button" class="btn btn-outline btn-sm" data-book-category="moto">Reservar en Moto</button>
-                </div>
-              </div>
-            </article>
-
-            <article class="fleet-card">
-              <div class="fleet-media">
-                <img
-                  src="/images/gran-porte-jv.jpg"
-                  alt="Capacitación profesional en camión y colectivo de gran porte"
-                  loading="lazy"
-                />
-                <span class="fleet-license-tag">Profesional C1–C3 · D1–D3 · E1</span>
-              </div>
-              <div class="fleet-body">
-                <h3>Camiones y Colectivos (Gran Porte)</h3>
-                <p>
-                  Capacitación técnica para choferes de carga y transporte de pasajeros. Perfeccioná radios de giro,
-                  uso de espejos gran angular, retroceso y maniobras de precisión.
-                </p>
-                <ul class="fleet-specs">
-                  <li>Entrenamiento para licencias profesionales C, D y E</li>
-                  <li>Control de puntos ciegos, gálibo y frenado neumático</li>
-                  <li>Ideal para salida laboral o ampliación de categoría</li>
-                </ul>
-                <div class="fleet-actions">
-                  <button type="button" class="btn btn-primary btn-sm" data-filter-jump="gran-porte">Ver curso Gran Porte</button>
-                  <button type="button" class="btn btn-outline btn-sm" data-book-category="gran-porte">Consultar Gran Porte</button>
-                </div>
-              </div>
-            </article>
-          </div>
+          <div class="fleet-tabs reveal" id="fleet-tabs" role="tablist" aria-label="Categorías de vehículos"></div>
+          <div id="fleet-showcase-container" class="reveal"></div>
         </div>
       </section>
 
-      <!-- CURSOS Y COMPRA ONLINE -->
+      <!-- CURSOS A MEDIDA (SIN PRECIOS INVENTADOS) -->
       <section class="section section-surface" id="cursos">
         <div class="container">
-          <div class="section-header">
-            <span class="section-kicker">Cursos a Medida &amp; Compra Online</span>
-            <h2 class="section-title">Elegí tu pack y armá tu compra o reserva</h2>
+          <div class="section-header reveal">
+            <span class="section-kicker">Cursos a Medida</span>
+            <h2 class="section-title">Elegí tu pack y consultá valores al instante</h2>
             <p class="section-subtitle">
-              Valores orientativos en pesos argentinos con <strong>10% OFF abonando por transferencia/efectivo</strong> o
-              hasta 6 cuotas. Sumalos al carrito o reservá directamente tu primer horario.
+              Armá tu selección y consultanos directamente por WhatsApp para recibir los valores vigentes y facilidades de pago.
             </p>
           </div>
 
-          <div class="filter-bar" role="tablist" aria-label="Filtrar cursos por categoría">
-            <button type="button" class="filter-btn is-active" data-category="all">Todos los cursos</button>
+          <div class="filter-bar reveal" role="tablist" aria-label="Filtrar cursos por categoría">
+            <button type="button" class="filter-btn is-active" data-category="all">Todos</button>
             <button type="button" class="filter-btn" data-category="manual">Auto Manual (Gol Rojo)</button>
             <button type="button" class="filter-btn" data-category="automatico">Auto Automático</button>
-            <button type="button" class="filter-btn" data-category="moto">Motos (Todas CC)</button>
-            <button type="button" class="filter-btn" data-category="gran-porte">Camiones y Colectivos</button>
-            <button type="button" class="filter-btn" data-category="extras">Estacionamiento &amp; Examen</button>
+            <button type="button" class="filter-btn" data-category="moto">Motos</button>
+            <button type="button" class="filter-btn" data-category="gran-porte">Gran Porte</button>
+            <button type="button" class="filter-btn" data-category="extras">Examen / Estacionamiento</button>
           </div>
 
-          <div class="courses-grid" id="courses-grid">
-            <!-- Renderizado dinámicamente desde /api/courses -->
+          <div class="courses-grid reveal" id="courses-grid"></div>
+        </div>
+      </section>
+
+      <!-- DIFERENCIACIÓN LIMPIA EN 4 PILARES -->
+      <section class="section" id="calidad">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-kicker">Calidad Real vs. Opciones Gratuitas</span>
+            <h2 class="section-title">¿Por qué somos la N° 1 de Hurlingham?</h2>
+            <p class="section-subtitle">
+              Obtener una licencia sin preparación real te expone en la calle. En JV invertís en tu seguridad con respaldo oficial.
+            </p>
+          </div>
+
+          <div class="pillars-grid reveal">
+            <article class="pillar-card">
+              <h3>Instructores matriculados PBA</h3>
+              <p>
+                Habilitación oficial vigente (Ley 13.927) y paciencia real para quienes arrancan desde cero o con miedo al tránsito, lejos de la improvisación.
+              </p>
+            </article>
+            <article class="pillar-card">
+              <h3>Unidades impecables con doble comando</h3>
+              <p>
+                Nuestro VW Gol rojo ploteado, autos automáticos, motos y gran porte cuentan con VTV al día, frenos revisados y seguro de enseñanza vigente.
+              </p>
+            </article>
+            <article class="pillar-card">
+              <h3>Práctica real de 60 minutos en calle</h3>
+              <p>
+                Clases 100% individuales recorriendo Av. Vergara, rotondas, esquinas complejas y estacionamiento real en Hurlingham, sin compartir turnos.
+              </p>
+            </article>
+            <article class="pillar-card">
+              <h3>Facilidades de pago y horarios flexibles</h3>
+              <p>
+                Turnos de Lunes a Sábados sin esperas de meses, facilidades de pago y acompañamiento el día del examen práctico.
+              </p>
+            </article>
           </div>
         </div>
       </section>
 
-      <!-- TURNERO ONLINE + SINCRONIZACIÓN GOOGLE CALENDAR -->
+      <!-- TURNERO ONLINE + GOOGLE CALENDAR -->
       <section class="section section-dark" id="turnero">
         <div class="container">
-          <div class="section-header">
-            <span class="section-kicker">Agenda Inteligente JV · Cloudflare Workers</span>
+          <div class="section-header reveal">
+            <span class="section-kicker">Agenda Online</span>
             <h2 class="section-title">Pre-reservá tu turno y agéndalo en Google Calendar</h2>
             <p class="section-subtitle">
-              Elegí el vehículo, la fecha y el horario disponible (Lun–Vie 8 a 18 hs · Sáb 9 a 13 hs). Al confirmar,
-              generás tu código de turno, el evento directo en tu Google Calendar y la confirmación por WhatsApp.
+              Atendemos de Lunes a Viernes de 8 a 18 hs y Sábados de 9 a 13 hs en Hurlingham.
             </p>
           </div>
 
-          <div class="booking-layout">
+          <div class="booking-layout reveal">
             <form class="booking-panel" id="booking-form">
               <div class="form-grid">
                 <div class="form-field">
@@ -420,13 +246,12 @@
                 </div>
 
                 <div class="form-field">
-                  <label for="booking-neighborhood">Localidad / Barrio</label>
+                  <label for="booking-neighborhood">Zona de Hurlingham</label>
                   <select id="booking-neighborhood" name="neighborhood">
                     <option value="Hurlingham Centro">Hurlingham Centro</option>
                     <option value="Villa Tesei">Villa Tesei</option>
                     <option value="William C. Morris">William C. Morris</option>
                     <option value="Barrio Mitre / Jorge Newbery">Barrio Mitre / Jorge Newbery</option>
-                    <option value="El Palomar / Morón Norte">El Palomar / Morón Norte</option>
                     <option value="Otra zona cercana">Otra zona cercana</option>
                   </select>
                 </div>
@@ -442,7 +267,7 @@
                 </div>
 
                 <div class="form-field form-field-full">
-                  <label for="booking-course">Pack o modalidad deseada (opcional)</label>
+                  <label for="booking-course">Curso de interés (opcional)</label>
                   <select id="booking-course" name="courseId">
                     <option value="">Clase inicial / A definir con el instructor</option>
                   </select>
@@ -464,69 +289,43 @@
                 </div>
 
                 <div class="form-field form-field-full">
-                  <label>Horarios disponibles para la fecha seleccionada</label>
+                  <label>Horarios disponibles</label>
                   <div class="slots-grid" id="slots-grid" role="radiogroup" aria-label="Horarios disponibles"></div>
                   <small id="slots-helper" style="color: var(--jv-muted); margin-top: 4px;"></small>
                 </div>
 
                 <div class="form-field form-field-full">
-                  <label for="booking-notes">Comentarios (ej: cilindrada de moto, si te cuesta estacionar, horarios)</label>
-                  <textarea
-                    id="booking-notes"
-                    name="notes"
-                    rows="2"
-                    placeholder="Contanos si buscás moto 150cc, camión C1, o si preferís practicar estacionamiento..."
-                  ></textarea>
+                  <label for="booking-notes">Comentarios (ej: cilindrada de moto, camión, estacionamiento)</label>
+                  <textarea id="booking-notes" name="notes" rows="2" placeholder="Contanos qué necesitás practicar..."></textarea>
                 </div>
               </div>
 
               <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
                 <button type="submit" class="btn btn-primary" id="booking-submit-btn">
-                  Confirmar Pre-Reserva y Generar Calendario
+                  Confirmar Pre-Reserva y Google Calendar
                 </button>
-                <span style="font-size: 0.82rem; color: var(--jv-muted);">
-                  Sin cargo online ahora · Confirmación rápida por WhatsApp
-                </span>
               </div>
 
               <div class="booking-status" id="booking-result" hidden></div>
             </form>
 
             <aside class="booking-info-card">
-              <h3>Cómo funciona nuestro sistema de turnos</h3>
-              <p style="color: #cbd5e1; font-size: 0.94rem; margin: 0;">
-                Esta plataforma corre sobre <strong>Cloudflare Workers</strong> y está diseñada para escalar con
-                sincronización directa a <strong>Google Calendar</strong> y pagos con <strong>Mercado Pago</strong>.
+              <h3>Listo para sincronizar con tu agenda</h3>
+              <p style="color: #cbd5e1; font-size: 0.92rem; margin: 0;">
+                Arquitectura preparada en Cloudflare Workers para integrar reservas en tiempo real con Google Calendar y pagos online.
               </p>
-
               <ul class="roadmap-list">
                 <li>
                   <span class="roadmap-step">1</span>
-                  <div>
-                    <strong>Elegís tu vehículo y horario real:</strong> Validamos disponibilidad según nuestra jornada
-                    de Lunes a Viernes (8 a 18 hs) y Sábados (9 a 13 hs).
-                  </div>
+                  <div><strong>Elegís vehículo y horario:</strong> Validado según atención de Lunes a Sábados.</div>
                 </li>
                 <li>
                   <span class="roadmap-step">2</span>
-                  <div>
-                    <strong>Agendás en tu Google Calendar:</strong> Con un clic guardás la clase en tu celular con la
-                    ubicación exacta de Av. Vergara 3855.
-                  </div>
+                  <div><strong>Agendás en Google Calendar:</strong> Con la dirección exacta de Av. Vergara 3855.</div>
                 </li>
                 <li>
                   <span class="roadmap-step">3</span>
-                  <div>
-                    <strong>Coordinás directo con JV:</strong> Tu solicitud llega armada a nuestro WhatsApp
-                    <strong>11-6817-2577</strong> para confirmar el instructor y la unidad.
-                  </div>
-                </li>
-                <li>
-                  <span class="roadmap-step">4</span>
-                  <div>
-                    <strong>Listo para crecer:</strong> Arquitectura preparada para habilitar cobro automático online y
-                    bloqueo automático en tiempo real con Google Calendar API.
-                  </div>
+                  <div><strong>Confirmación por WhatsApp:</strong> Coordinación directa al 11-6817-2577.</div>
                 </li>
               </ul>
             </aside>
@@ -534,124 +333,90 @@
         </div>
       </section>
 
-      <!-- PAUTAS DEL EXAMEN PRÁCTICO + SIMULADOR TEÓRICO (Inspirado en Driver's School) -->
+      <!-- PAUTAS Y SIMULADOR EN TABS COMPACTOS -->
       <section class="section" id="examen">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header reveal">
             <span class="section-kicker">Preparación Integral</span>
-            <h2 class="section-title">Pautas del examen práctico y mini test teórico PBA</h2>
-            <p class="section-subtitle">
-              En JV Autoescuela no solo manejás: te preparamos punto por punto para aprobar el teórico y el práctico de
-              Hurlingham al primer intento.
-            </p>
+            <h2 class="section-title">Examen práctico y test teórico PBA</h2>
           </div>
 
-          <div class="exam-grid">
-            <div class="pautas-list">
-              <div class="pauta-item">
-                <h4>1. Postura, cinturón, espejos y luces</h4>
-                <p>
-                  Antes de encender el motor: regulá butaca, espejos laterales y retrovisor, colocáte el cinturón y
-                  recordá encender luces bajas reglamentarias.
-                </p>
-              </div>
-              <div class="pauta-item">
-                <h4>2. Estacionamiento en hasta 3 maniobras</h4>
-                <p>
-                  Sin tocar el cordón ni los conos. En nuestras clases te enseñamos referencias visuales exactas con
-                  los parantes y espejos del VW Gol rojo.
-                </p>
-              </div>
-              <div class="pauta-item">
-                <h4>3. Prioridad peatonal, rotondas y giros</h4>
-                <p>
-                  En Provincia de Buenos Aires tiene prioridad absoluta quien ya circula por la rotonda y el peatón en
-                  la senda peatonal. Usá siempre luz de giro con anticipación.
-                </p>
-              </div>
-              <div class="pauta-item">
-                <h4>4. Conducción en marcha y marcha atrás</h4>
-                <p>
-                  Control suave de embrague y freno, sin que se pare el motor en arranque ni invadir carriles contrarios.
-                </p>
-              </div>
-            </div>
+          <div class="exam-tabs reveal">
+            <button type="button" class="fleet-tab is-active" data-exam-tab="pautas">Pautas del Examen Práctico</button>
+            <button type="button" class="fleet-tab" data-exam-tab="quiz">Simulador Teórico PBA (6 preguntas)</button>
+          </div>
 
-            <div class="quiz-card" id="quiz-card">
-              <div class="quiz-header">
-                <strong>Simulador Rápido · Examen Teórico PBA</strong>
-                <span class="quiz-progress" id="quiz-progress">Pregunta 1 de 8</span>
-              </div>
-              <div id="quiz-body">
-                <!-- Renderizado por JS -->
-              </div>
+          <div id="exam-pautas-panel" class="pillars-grid panel-animate">
+            <article class="pillar-card">
+              <h3>1. Postura, espejos y luces</h3>
+              <p>Antes de arrancar: regulá butaca, espejos, colocáte el cinturón y encendé luces bajas reglamentarias.</p>
+            </article>
+            <article class="pillar-card">
+              <h3>2. Estacionamiento sin tocar cordón</h3>
+              <p>En hasta 3 maniobras usando las referencias visuales exactas que practicás en nuestro Gol rojo.</p>
+            </article>
+            <article class="pillar-card">
+              <h3>3. Prioridades y rotondas</h3>
+              <p>Prioridad al peatón en senda peatonal y a quien ya circula dentro de la rotonda. Siempre usá luz de giro.</p>
+            </article>
+            <article class="pillar-card">
+              <h3>4. Control suave de marcha</h3>
+              <p>Arranque en pendiente, dominio de embrague y frenado progresivo sin que se pare el motor.</p>
+            </article>
+          </div>
+
+          <div id="exam-quiz-panel" class="quiz-card panel-animate" hidden>
+            <div class="quiz-header">
+              <strong>Simulador Rápido · Examen Teórico PBA</strong>
+              <span class="quiz-progress" id="quiz-progress">Pregunta 1 de 6</span>
             </div>
+            <div id="quiz-body"></div>
           </div>
         </div>
       </section>
 
-      <!-- RESEÑAS Y UBICACIÓN EN HURLINGHAM -->
+      <!-- RESEÑAS Y UBICACIÓN -->
       <section class="section section-surface" id="ubicacion">
         <div class="container">
-          <div class="section-header">
-            <span class="section-kicker">4.8 ★ en Google · +256 reseñas reales</span>
-            <h2 class="section-title">Vecinos de Hurlingham que ya manejan con confianza</h2>
-            <p class="section-subtitle">
-              Nuestra mejor publicidad es cada alumno que aprueba tranquilo y sale a manejar seguro por todo el partido.
-            </p>
+          <div class="section-header reveal">
+            <span class="section-kicker">4.8 ★ en Google · +256 reseñas</span>
+            <h2 class="section-title">Alumnos de Hurlingham que recomiendan JV</h2>
           </div>
 
-          <div class="reviews-grid">
+          <div class="reviews-grid reveal">
             <article class="review-card">
-              <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-              <p>
-                “Arranqué con muchísimo miedo al tránsito de Vergara y en el Gol rojo me sentí cuidada desde el minuto
-                uno. Paciencia increíble, aprobé el práctico a la primera.”
-              </p>
+              <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+              <p>“Arranqué con muchísimo miedo al tránsito de Vergara y en el Gol rojo me sentí cuidada desde el minuto uno. Aprobé a la primera.”</p>
               <div class="review-author">Camila R.</div>
-              <div class="review-zone">Villa Tesei · Curso Completo 10 Clases</div>
+              <div class="review-zone">Villa Tesei</div>
             </article>
-
             <article class="review-card">
-              <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-              <p>
-                “Hice dos clases exclusivas de estacionamiento y alquiler del auto para rendir en Hurlingham. El auto
-                impecable, puntualidad total y tips súper claros.”
-              </p>
+              <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+              <p>“Hice clases de estacionamiento y alquilé el auto habilitado para rendir en Hurlingham. Puntualidad y paciencia total.”</p>
               <div class="review-author">Matías G.</div>
-              <div class="review-zone">Hurlingham Centro · Examen Práctico</div>
+              <div class="review-zone">Hurlingham Centro</div>
             </article>
-
             <article class="review-card">
-              <div class="review-stars" aria-label="5 de 5 estrellas">★★★★★</div>
-              <p>
-                “Me preparé para ampliar mi licencia de moto y también consulté por camión profesional. Se nota la
-                diferencia entre una escuela seria matriculada y cualquier curso improvisado.”
-              </p>
+              <div class="review-stars" aria-label="5 estrellas">★★★★★</div>
+              <p>“Me preparé para moto y consulté por gran porte. Se nota la diferencia entre una escuela matriculada seria y cualquier curso improvisado.”</p>
               <div class="review-author">Facundo L.</div>
-              <div class="review-zone">William C. Morris · Moto &amp; Gran Porte</div>
+              <div class="review-zone">William C. Morris</div>
             </article>
           </div>
 
-          <div class="location-box">
+          <div class="location-box reveal">
             <div class="location-details">
               <span class="section-kicker">Sede Central Hurlingham</span>
-              <h3>Te esperamos en Av. Gobernador Vergara 3855</h3>
-              <p style="color: var(--jv-muted); margin: 0;">
-                Sobre la arteria principal de Hurlingham, con acceso rápido desde Villa Tesei, William C. Morris y
-                Hurlingham Centro.
-              </p>
-
+              <h3>Av. Gobernador Vergara 3855</h3>
               <div class="contact-rows">
-                <div><strong>Dirección:</strong> Av. Gobernador Vergara 3855, B1686 Hurlingham, PBA</div>
-                <div><strong>WhatsApp / Teléfono:</strong> <a href="tel:+5491168172577">11-6817-2577</a></div>
-                <div><strong>Horarios:</strong> Lunes a Viernes 8:00 a 18:00 hs · Sábados 9:00 a 13:00 hs</div>
-                <div><strong>Habilitación:</strong> Padrón Oficial PBA · Disposición DISPO-2024-5</div>
+                <div><strong>Dirección:</strong> Av. Gobernador Vergara 3855, Hurlingham, PBA</div>
+                <div><strong>WhatsApp:</strong> <a href="tel:+5491168172577">11-6817-2577</a></div>
+                <div><strong>Horarios:</strong> Lun a Vie 8 a 18 hs · Sábados 9 a 13 hs</div>
+                <div><strong>Habilitación:</strong> Padrón Oficial PBA · DISPO-2024-5</div>
               </div>
-
               <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                 <a
-                  href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela!%20Quiero%20consultar%20horarios%20disponibles."
+                  href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela%20Hurlingham!%20Quiero%20consultar%20por%20clases."
                   target="_blank"
                   rel="noopener noreferrer"
                   class="btn btn-whatsapp btn-sm"
@@ -664,7 +429,7 @@
                   rel="noopener noreferrer"
                   class="btn btn-outline btn-sm"
                 >
-                  Abrir Mapa en Grande
+                  Ver en Mapa
                 </a>
               </div>
             </div>
@@ -687,35 +452,26 @@
         <div class="footer-grid">
           <div>
             <div style="background: #ffffff; padding: 8px 14px; border-radius: 10px; display: inline-flex; margin-bottom: 14px;">
-              <img
-                src="/images/logo-jv.svg"
-                alt="Logo JV Autoescuela Hurlingham"
-                width="200"
-                height="50"
-                style="height: 44px; width: auto;"
-              />
+              <img src="/images/logo-jv.svg" alt="Logo JV Autoescuela Hurlingham" width="200" height="50" style="height: 42px; width: auto;" />
             </div>
-            <p style="font-size: 0.9rem; margin: 0; max-width: 40ch;">
-              Escuela de conductores matriculada en la Provincia de Buenos Aires (Ley 13.927). Formación profesional en
-              auto manual (VW Gol rojo), automático, motos y vehículos de gran porte.
+            <p style="font-size: 0.9rem; margin: 0; max-width: 38ch;">
+              Escuela de conductores matriculada en Hurlingham (Ley 13.927). Auto manual VW Gol rojo, automático, motos y gran porte.
             </p>
           </div>
-
           <div>
-            <h4 class="footer-title">Navegación</h4>
+            <h4 class="footer-title">Secciones</h4>
             <ul class="footer-links">
+              <li><a href="#categorias">Categorías y Flota</a></li>
+              <li><a href="#cursos">Cursos a Medida</a></li>
               <li><a href="#calidad">Por qué elegir JV</a></li>
-              <li><a href="#categorias">Auto, Moto y Gran Porte</a></li>
-              <li><a href="#cursos">Cursos y Compra Online</a></li>
               <li><a href="#turnero">Reservar Turno</a></li>
-              <li><a href="#examen">Pautas y Simulador Teórico</a></li>
+              <li><a href="#examen">Examen PBA</a></li>
             </ul>
           </div>
-
           <div>
-            <h4 class="footer-title">Contacto Directo</h4>
+            <h4 class="footer-title">Contacto Hurlingham</h4>
             <ul class="footer-links">
-              <li>Av. Gobernador Vergara 3855, Hurlingham</li>
+              <li>Av. Gobernador Vergara 3855</li>
               <li>WhatsApp: <a href="https://wa.me/5491168172577" target="_blank" rel="noopener noreferrer">11-6817-2577</a></li>
               <li>Lun a Vie: 8:00 a 18:00 hs</li>
               <li>Sábados: 9:00 a 13:00 hs</li>
@@ -723,43 +479,36 @@
             </ul>
           </div>
         </div>
-
         <div class="footer-bottom">
           <span>© 2026 JV Autoescuela Hurlingham. Todos los derechos reservados.</span>
-          <span>Desplegable en Cloudflare Workers · Preparado para Google Calendar &amp; Pago Online</span>
+          <span>Cloudflare Workers · Preparado para Turnos, Google Calendar y Pagos Online</span>
         </div>
       </div>
     </footer>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <!-- WHATSAPP FLOTANTE -->
     <a
-      href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela!%20Quiero%20informaci%C3%B3n%20sobre%20las%20clases%20de%20manejo."
+      href="https://wa.me/5491168172577?text=Hola%20JV%20Autoescuela%20Hurlingham!%20Quiero%20consultar%20por%20clases%20de%20manejo."
       class="wa-float"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Consultar por WhatsApp al 11-6817-2577"
     >
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <path
-          d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.49 0 .14 5.34.14 11.91c0 2.1.55 4.15 1.59 5.95L0 24l6.33-1.66a11.9 11.9 0 0 0 5.73 1.46h.01c6.57 0 11.92-5.34 11.92-11.91 0-3.18-1.24-6.17-3.47-8.41zm-8.45 18.3a9.89 9.89 0 0 1-5.04-1.38l-.36-.22-3.76.98 1-3.66-.24-.38a9.87 9.87 0 0 1-1.51-5.21c0-5.46 4.44-9.9 9.91-9.9 2.64 0 5.13 1.03 7 2.9a9.84 9.84 0 0 1 2.9 7c0 5.47-4.45 9.9-9.9 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.05 1.03-1.05 2.51 0 1.48 1.08 2.91 1.23 3.11.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.64.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"
-        />
+        <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.49 0 .14 5.34.14 11.91c0 2.1.55 4.15 1.59 5.95L0 24l6.33-1.66a11.9 11.9 0 0 0 5.73 1.46h.01c6.57 0 11.92-5.34 11.92-11.91 0-3.18-1.24-6.17-3.47-8.41zm-8.45 18.3a9.89 9.89 0 0 1-5.04-1.38l-.36-.22-3.76.98 1-3.66-.24-.38a9.87 9.87 0 0 1-1.51-5.21c0-5.46 4.44-9.9 9.91-9.9 2.64 0 5.13 1.03 7 2.9a9.84 9.84 0 0 1 2.9 7c0 5.47-4.45 9.9-9.9 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.08-.8.37-.27.3-1.05 1.03-1.05 2.51 0 1.48 1.08 2.91 1.23 3.11.15.2 2.12 3.24 5.14 4.54.72.31 1.28.5 1.71.64.72.23 1.38.2 1.9.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z" />
       </svg>
       <span>WhatsApp JV</span>
     </a>
 
-    <!-- DRAWER CARRITO DE COMPRA ONLINE -->
+    <!-- DRAWER COTIZADOR ONLINE -->
     <div class="drawer-backdrop" id="cart-backdrop"></div>
-    <aside class="cart-drawer" id="cart-drawer" aria-label="Carrito de Compra Online" aria-hidden="true">
+    <aside class="cart-drawer" id="cart-drawer" aria-label="Solicitud de Presupuesto JV" aria-hidden="true">
       <div class="cart-head">
-        <h3>Tu Compra Online JV</h3>
-        <button type="button" class="cart-close" id="close-cart-btn" aria-label="Cerrar carrito">✕</button>
+        <h3>Tu Selección para Cotizar</h3>
+        <button type="button" class="cart-close" id="close-cart-btn" aria-label="Cerrar">✕</button>
       </div>
-      <div class="cart-body" id="cart-items-container">
-        <!-- Renderizado por JS -->
-      </div>
-      <div class="cart-foot" id="cart-footer">
-        <!-- Renderizado por JS -->
-      </div>
+      <div class="cart-body" id="cart-items-container"></div>
+      <div class="cart-foot" id="cart-footer"></div>
     </aside>
 
     <script type="module" src="/src/main.js"></script>
